@@ -104,16 +104,56 @@ body {
   border: 1px solid #d7e8f0;
   border-radius: 8px;
   color: #475569;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 800;
-  min-width: 2.35rem;
-  padding: 0.45rem 0.55rem;
+  min-width: 100%;
+  padding: 0.55rem 0.75rem;
+  text-align: left;
 }
 
 .language-button.is-active {
-  background: var(--brand-700);
-  border-color: var(--brand-700);
-  color: #fff;
+  background: var(--brand-100);
+  border-color: #91d3ef;
+  color: var(--brand-800);
+}
+
+.language-trigger {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d7e8f0;
+  border-radius: 8px;
+  color: #0f334d;
+  display: inline-flex;
+  font-size: 0.84rem;
+  font-weight: 900;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.language-menu {
+  background: #fff;
+  border: 1px solid #d7e8f0;
+  border-radius: 8px;
+  box-shadow: 0 16px 34px rgba(7, 87, 120, 0.16);
+  min-width: 10.5rem;
+  padding: 0.4rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.45rem);
+  z-index: 70;
+}
+
+.language-menu .language-button {
+  border-color: transparent;
+  display: flex;
+  gap: 0.55rem;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.language-menu .language-button:hover {
+  background: #f0fbff;
 }
 
 .surface {
@@ -183,6 +223,26 @@ body {
 .content-panel p {
   color: #475569;
   line-height: 1.75;
+}
+
+.content-panel strong,
+.seo-rich strong {
+  color: var(--brand-800);
+  font-weight: 900;
+}
+
+.service-hero {
+  background:
+    linear-gradient(90deg, rgba(4, 63, 95, 0.9), rgba(4, 63, 95, 0.62), rgba(4, 63, 95, 0.2)),
+    var(--service-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.map-frame {
+  border: 0;
+  min-height: 22rem;
+  width: 100%;
 }
 
 @media (max-width: 767px) {
