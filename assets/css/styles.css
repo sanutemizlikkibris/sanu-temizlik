@@ -1,0 +1,200 @@
+:root {
+  --brand-900: #043f5f;
+  --brand-800: #075778;
+  --brand-700: #0879b8;
+  --brand-600: #119be0;
+  --brand-100: #e8f7ff;
+  --ink: #132334;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.skip-link {
+  background: var(--brand-900);
+  color: #fff;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  top: -5rem;
+  z-index: 60;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.hero-cleaning {
+  background-image:
+    linear-gradient(90deg, rgba(4, 63, 95, 0.88) 0%, rgba(4, 63, 95, 0.68) 44%, rgba(4, 63, 95, 0.22) 100%),
+    url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1800&q=82");
+  background-position: center;
+  background-size: cover;
+}
+
+.section-kicker {
+  color: var(--brand-700);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-white {
+  align-items: center;
+  border-radius: 8px;
+  display: inline-flex;
+  font-weight: 800;
+  gap: 0.55rem;
+  justify-content: center;
+  line-height: 1.1;
+  min-height: 3rem;
+  padding: 0.85rem 1.1rem;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.btn-primary {
+  background: var(--brand-700);
+  box-shadow: 0 14px 30px rgba(8, 121, 184, 0.22);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--brand-800);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #fff;
+  border: 1px solid #c6e8f7;
+  color: var(--brand-800);
+}
+
+.btn-secondary:hover,
+.btn-white:hover {
+  box-shadow: 0 12px 26px rgba(7, 87, 120, 0.13);
+  transform: translateY(-1px);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--brand-800);
+}
+
+.nav-link {
+  color: #334155;
+  font-size: 0.94rem;
+  font-weight: 700;
+  transition: color 160ms ease;
+}
+
+.nav-link:hover {
+  color: var(--brand-700);
+}
+
+.language-button {
+  border: 1px solid #d7e8f0;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 800;
+  min-width: 2.35rem;
+  padding: 0.45rem 0.55rem;
+}
+
+.language-button.is-active {
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+  color: #fff;
+}
+
+.surface {
+  background: #fff;
+  border: 1px solid #dbeef7;
+  border-radius: 8px;
+  box-shadow: 0 18px 45px rgba(7, 87, 120, 0.08);
+}
+
+.service-card,
+.city-card,
+.stat-card {
+  border: 1px solid #dbeef7;
+  border-radius: 8px;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.service-card:hover,
+.city-card:hover {
+  border-color: #91d3ef;
+  box-shadow: 0 16px 34px rgba(7, 87, 120, 0.11);
+  transform: translateY(-2px);
+}
+
+.icon-tile {
+  align-items: center;
+  background: var(--brand-100);
+  border-radius: 8px;
+  color: var(--brand-700);
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.form-input {
+  background: #fff;
+  border: 1px solid #cfe3ed;
+  border-radius: 8px;
+  color: #0f172a;
+  min-height: 3rem;
+  outline: none;
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: var(--brand-700);
+  box-shadow: 0 0 0 4px rgba(17, 155, 224, 0.16);
+}
+
+.footer-link {
+  color: #d8ecf7;
+  transition: color 160ms ease;
+}
+
+.footer-link:hover {
+  color: #fff;
+}
+
+.content-panel h2,
+.content-panel h3 {
+  color: #0f334d;
+  font-weight: 900;
+}
+
+.content-panel p {
+  color: #475569;
+  line-height: 1.75;
+}
+
+@media (max-width: 767px) {
+  .hero-cleaning {
+    background-image:
+      linear-gradient(180deg, rgba(4, 63, 95, 0.92) 0%, rgba(4, 63, 95, 0.74) 58%, rgba(4, 63, 95, 0.48) 100%),
+      url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1100&q=80");
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-white {
+    width: 100%;
+  }
+}
