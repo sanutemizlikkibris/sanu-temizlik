@@ -37,31 +37,14 @@ body {
 .hero-cleaning {
   overflow: hidden;
   position: relative;
+  background-color: #020617; /* Very dark blue/black */
 }
 
 .hero-bg {
   position: absolute;
-  inset: -6%;
-  background-image:
-    url("../img/sanu-hero-team.jpg");
-  background-position: center;
-  background-size: cover;
-  animation: kenBurns 18s ease-in-out infinite alternate;
-  will-change: transform;
-  z-index: 0;
-}
-
-.hero-bg::after {
-  content: "";
-  position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      105deg,
-      rgba(0, 47, 95, 0.55) 0%,
-      rgba(0, 64, 120, 0.40) 45%,
-      rgba(0, 150, 199, 0.10) 100%
-    );
+  opacity: 0.5;
+  z-index: 0;
 }
 
 .hero-cleaning > div {
