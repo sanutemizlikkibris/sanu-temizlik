@@ -47,7 +47,7 @@ body {
   z-index: 0;
 }
 
-.hero-cleaning > div {
+.hero-cleaning > .mx-auto {
   position: relative;
   z-index: 1;
 }
