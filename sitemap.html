@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Haritası - Sanu Temizlik</title>
+  <meta name="description" content="Sanu Temizlik web sitesi haritası. Tüm hizmet, bölge ve dil sayfalarımıza buradan hızlıca ulaşabilirsiniz.">
+  
+  <link rel="icon" href="/assets/img/sanu-temizlik-logo.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Outfit', sans-serif; }
+    .sitemap-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .sitemap-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+    .sitemap-link {
+      display: inline-block;
+      padding: 0.5rem 0;
+      color: #334155;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .sitemap-link:hover {
+      color: #0369a1; /* sky-700 */
+      transform: translateX(4px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 flex flex-col min-h-screen text-slate-800 antialiased selection:bg-sky-200 selection:text-sky-900">
+
+  <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8" aria-label="Ana menü">
+      <a href="/" class="flex items-center gap-3" aria-label="Sanu Temizlik ana sayfa">
+        <img src="/assets/img/sanu-temizlik-logo.png" alt="Sanu Temizlik ve Ticaret Ltd. logosu" class="h-12 w-auto">
+      </a>
+      <div class="hidden items-center gap-7 lg:flex">
+        <a class="nav-link" href="/" data-i18n="nav.home">Ana Sayfa</a>
+        <a class="nav-link" href="/hizmetler/" data-i18n="nav.services">Hizmetler</a>
+        <a class="nav-link" href="/#cities" data-i18n="nav.cities">Bölgeler</a>
+        <a class="nav-link" href="/#about" data-i18n="nav.about">Hakkımızda</a>
+        <a class="nav-link" href="/iletisim/" data-i18n="nav.contact">İletişim</a>
+      </div>
+      <div class="flex items-center gap-2">
+        
+    <div class="relative" data-language-dropdown>
+      <button class="language-trigger" type="button" data-language-toggle aria-label="Dil seç">
+        <span data-current-flag>🇹🇷</span>
+        <span data-current-lang>TR</span>
+        <i data-lucide="chevron-down" class="h-4 w-4" aria-hidden="true"></i>
+      </button>
+      <div class="language-menu hidden" data-language-menu>
+        <button class="language-button" type="button" data-lang-option="tr" data-lang-url="/" aria-pressed="true"><span>🇹🇷</span><span>Türkçe</span></button>
+        <button class="language-button" type="button" data-lang-option="en" data-lang-url="/en/" aria-pressed="false"><span>🇬🇧</span><span>English</span></button>
+        <button class="language-button" type="button" data-lang-option="ru" data-lang-url="/ru/" aria-pressed="false"><span>🇷🇺</span><span>Русский</span></button>
+      </div>
+    </div>
+        <a class="btn-primary hidden lg:inline-flex" href="http://wa.me/+905338828989" data-whatsapp-cta>
+          <i data-lucide="message-circle" class="h-5 w-5" aria-hidden="true"></i>
+          <span data-i18n="nav.quote">Teklif Al</span>
+        </a>
+        <button class="inline-flex rounded-md border border-sky-100 p-2 text-brand-800 lg:hidden" type="button" data-mobile-menu-button aria-expanded="false" aria-label="Menüyü aç">
+          <i data-lucide="menu" class="h-6 w-6" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+    <div class="hidden border-t border-sky-100 bg-white px-4 py-4 lg:hidden" data-mobile-menu>
+      <div class="grid gap-3">
+        <a class="nav-link" href="/" data-i18n="nav.home">Ana Sayfa</a>
+        <a class="nav-link" href="/hizmetler/" data-i18n="nav.services">Hizmetler</a>
+        <a class="nav-link" href="/#cities" data-i18n="nav.cities">Bölgeler</a>
+        <a class="nav-link" href="/#about" data-i18n="nav.about">Hakkımızda</a>
+        <a class="nav-link" href="/iletisim/" data-i18n="nav.contact">İletişim</a>
+        <a class="btn-primary mt-2" href="http://wa.me/+905338828989" data-whatsapp-cta>
+          <i data-lucide="message-circle" class="h-5 w-5" aria-hidden="true"></i>
+          <span data-i18n="nav.quote">Teklif Al</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 w-full">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl font-black text-slate-900 sm:text-5xl">Site Haritası</h1>
+      <p class="mt-4 text-lg text-slate-600">Aradığınız her şey burada. Sanu Temizlik dünyasını keşfedin.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Ana Menü -->
+      <div class="sitemap-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <div class="bg-sky-100 p-3 rounded-lg text-sky-600">
+            <i data-lucide="home" class="h-6 w-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">Ana Sayfalar</h2>
+        </div>
+        <ul class="space-y-2">
+          <li><a href="/" class="sitemap-link font-medium">Ana Sayfa</a></li>
+          <li><a href="/#about" class="sitemap-link font-medium">Hakkımızda</a></li>
+          <li><a href="/hizmetler/" class="sitemap-link font-medium">Tüm Hizmetler</a></li>
+          <li><a href="/iletisim/" class="sitemap-link font-medium">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- Hizmet Bölgeleri -->
+      <div class="sitemap-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <div class="bg-sky-100 p-3 rounded-lg text-sky-600">
+            <i data-lucide="map-pin" class="h-6 w-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">Bölgeler</h2>
+        </div>
+        <ul class="space-y-2">
+          <li><a href="/lefkosa/" class="sitemap-link font-medium">Lefkoşa Temizlik Şirketi</a></li>
+          <li><a href="/girne/" class="sitemap-link font-medium">Girne Temizlik Şirketi</a></li>
+          <li><a href="/gazi-magusa/" class="sitemap-link font-medium">Gazi Mağusa Temizlik Şirketi</a></li>
+          <li><a href="/guzelyurt/" class="sitemap-link font-medium">Güzelyurt Temizlik Şirketi</a></li>
+        </ul>
+      </div>
+
+      <!-- Diğer Diller -->
+      <div class="sitemap-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <div class="bg-sky-100 p-3 rounded-lg text-sky-600">
+            <i data-lucide="globe" class="h-6 w-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">Diğer Diller</h2>
+        </div>
+        <ul class="space-y-2">
+          <li><a href="/en/" class="sitemap-link font-medium flex items-center gap-2"><span class="text-xl">🇬🇧</span> English (EN)</a></li>
+          <li><a href="/ru/" class="sitemap-link font-medium flex items-center gap-2"><span class="text-xl">🇷🇺</span> Русский (RU)</a></li>
+        </ul>
+      </div>
+
+      <!-- Tüm Hizmetler Geniş Blok -->
+      <div class="sitemap-card bg-white rounded-2xl p-8 border border-slate-100 shadow-sm lg:col-span-3">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <div class="bg-sky-100 p-3 rounded-lg text-sky-600">
+            <i data-lucide="sparkles" class="h-6 w-6"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">Tüm Hizmetlerimiz</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-4">
+          <a href="/hizmetler/ev-temizligi/" class="sitemap-link font-medium">Ev Temizliği</a>
+          <a href="/hizmetler/ofis-temizligi/" class="sitemap-link font-medium">Ofis Temizliği</a>
+          <a href="/hizmetler/insaat-sonrasi-temizlik/" class="sitemap-link font-medium">İnşaat Sonrası Temizlik</a>
+          <a href="/hizmetler/mermer-cilalama/" class="sitemap-link font-medium">Mermer Cilalama</a>
+          <a href="/hizmetler/hasere-ilaclama/" class="sitemap-link font-medium">Haşere İlaçlama</a>
+          <a href="/hizmetler/koltuk-yikama/" class="sitemap-link font-medium">Koltuk Yıkama</a>
+          <a href="/hizmetler/hali-yikama/" class="sitemap-link font-medium">Halı Yıkama</a>
+          <a href="/hizmetler/apartman-merdiven-temizligi/" class="sitemap-link font-medium">Apartman Merdiven Temizliği</a>
+          <a href="/hizmetler/duzenli-temizlik/" class="sitemap-link font-medium">Düzenli Temizlik</a>
+          <a href="/hizmetler/hastane-temizligi/" class="sitemap-link font-medium">Hastane ve Klinik Temizliği</a>
+          <a href="/hizmetler/magaza-temizligi/" class="sitemap-link font-medium">Mağaza Temizliği</a>
+          <a href="/hizmetler/dis-cephe-cam-temizligi/" class="sitemap-link font-medium">Dış Cephe Cam Temizliği</a>
+          <a href="/hizmetler/elektrik-servisi/" class="sitemap-link font-medium">Elektrik Servisi</a>
+          <a href="/hizmetler/su-tesisati-servisi/" class="sitemap-link font-medium">Su Tesisatı Servisi</a>
+          <a href="/hizmetler/bakim-onarim/" class="sitemap-link font-medium">Bakım Onarım</a>
+          <a href="/hizmetler/montaj-servisi/" class="sitemap-link font-medium">Montaj Servisi</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-brand-900 py-12 text-sky-50">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <img src="/assets/img/sanu-temizlik-logo.png" alt="Sanu Temizlik ve Ticaret Ltd. logosu" class="h-14 w-auto rounded-md bg-white p-2">
+          <p class="mt-5 max-w-md text-sky-100">2012'den beri Lefkoşa merkezli. Kıbrıs'ta ev, ofis, villa ve işletmeler için temizlik ve teknik servis çözümleri.</p>
+          <div class="mt-4 flex gap-3">
+            <a href="http://wa.me/+905338828989" class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-bold text-white hover:bg-green-500 transition-colors">
+              <i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-sm font-black uppercase tracking-widest text-white">Sayfalar</h2>
+          <ul class="mt-4 grid gap-3 text-sm">
+            <li><a class="footer-link" href="/hizmetler/">Tüm Hizmetler</a></li>
+            <li><a class="footer-link" href="/lefkosa/">Lefkoşa Temizlik</a></li>
+            <li><a class="footer-link" href="/girne/">Girne Temizlik</a></li>
+            <li><a class="footer-link" href="/gazi-magusa/">Gazi Mağusa Temizlik</a></li>
+            <li><a class="footer-link" href="/guzelyurt/">Güzelyuırt Temizlik</a></li>
+            <li><a class="footer-link" href="/sitemap.html">Site Haritası</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-sm font-black uppercase tracking-widest text-white">İletişim</h2>
+          <ul class="mt-4 grid gap-3 text-sm">
+            <li><a class="footer-link" href="mailto:info@sanutemizlik.com">info@sanutemizlik.com</a></li>
+            <li><a class="footer-link inline-flex items-center gap-2" href="tel:+905338828989"><i data-lucide="phone" class="h-4 w-4"></i>+90 533 882 89 89</a></li>
+            <li><a class="footer-link" href="tel:+905338828182">+90 533 882 81 82</a></li>
+            
+            
+            <li class="text-sky-200">Tahsin Yazıcı Sok. No:5 Çağlayan, Lefkoşa / KKTC</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 border-t border-sky-800 pt-6 flex flex-col-reverse md:flex-row items-center justify-between gap-6 text-sm text-sky-200 text-center md:text-left">
+        <div class="mb-4 md:mb-0">
+          &copy; <span data-current-year>2026</span> Sanu Temizlik ve Ticaret Ltd. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span>
+        </div>
+        <div class="flex items-center justify-center gap-6 mt-4 md:mt-0">
+          <a href="https://www.facebook.com/SanuTemizlik" target="_blank" class="text-sky-200 hover:text-white transition-transform hover:scale-125" aria-label="Facebook"><i data-lucide="facebook" class="h-7 w-7"></i></a>
+          <a href="https://www.instagram.com/sanuharac/" target="_blank" class="text-sky-200 hover:text-white transition-transform hover:scale-125" aria-label="Instagram"><i data-lucide="instagram" class="h-7 w-7"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
