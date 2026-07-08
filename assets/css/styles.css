@@ -43,7 +43,7 @@ body {
   position: absolute;
   inset: -6%;
   background-image:
-    url("/assets/img/sanu-hero-team.jpg");
+    url("../img/sanu-hero-team.jpg");
   background-position: center;
   background-size: cover;
   animation: kenBurns 18s ease-in-out infinite alternate;
