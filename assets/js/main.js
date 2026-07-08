@@ -97,6 +97,8 @@ const messageLabels = {
   }
 };
 
+const turkishMessageLabels = messageLabels.tr;
+
 function getCurrentLanguage() {
   const languageFromUrl = new URLSearchParams(window.location.search).get("lang");
   return languageFromUrl || localStorage.getItem("sanuLanguage") || document.documentElement.lang || "tr";
@@ -167,7 +169,7 @@ function getSelectedText(form, fieldName) {
   if (!field) return "";
 
   if (field.tagName === "SELECT") {
-    return field.options[field.selectedIndex]?.textContent.trim() || field.value;
+    return field.value || field.options[field.selectedIndex]?.textContent.trim() || "";
   }
 
   return field.value.trim();
@@ -179,11 +181,13 @@ function setupWhatsAppForms() {
       event.preventDefault();
 
       const language = getCurrentLanguage();
-      const labels = messageLabels[language] || messageLabels.tr;
+      const labels = turkishMessageLabels;
+      const sourceLanguage = languages[language]?.label || "Türkçe";
       const pageTitle = document.querySelector("h1")?.textContent?.trim() || document.title;
       const details = [
-        labels.intro,
+        "Merhaba Sanu Temizlik, web sitesinden hizmet talebi geldi.",
         "",
+        `Site dili: ${sourceLanguage}`,
         `Sayfa: ${pageTitle}`,
         `${labels.name}: ${getSelectedText(form, "name") || "-"}`,
         `${labels.phone}: ${getSelectedText(form, "phone") || "-"}`,
@@ -255,7 +259,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setupAutoRedirect();
 
   document.querySelectorAll("[data-lang-option]").forEach((button) => {
-    button.addEventListener("click", () => applyLanguage(button.dataset.langOption));
+    button.addEventListener("click", () => {
+      if (button.dataset.langUrl) {
+        window.location.href = button.dataset.langUrl;
+        return;
+      }
+
+      applyLanguage(button.dataset.langOption);
+    });
   });
 
   const year = document.querySelector("[data-current-year]");
