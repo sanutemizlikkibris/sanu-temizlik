@@ -11,7 +11,7 @@ const cities = [
     name: "Lefkoşa",
     title: "Lefkoşa Temizlik Şirketi",
     keyword: "lefkoşa temizlik şirketi",
-    intro: "Lefkoşa merkezli Sanu Temizlik, evlerden kurumsal alanlara kadar geniş bir hizmet planı sunar.",
+    intro: "Lefkoşa’da işler bazen aceleye gelir; ev de ofis de bir anda toparlanmak ister. Sanu Temizlik, tam da o noktada düzenli, güler yüzlü ve işini bilen ekibiyle yanınızdadır.",
     districts: "Çağlayan, Gönyeli, Küçük Kaymaklı, Ortaköy, Hamitköy ve Lefkoşa çevresi"
   },
   {
@@ -19,7 +19,7 @@ const cities = [
     name: "Girne",
     title: "Girne Temizlik Şirketi",
     keyword: "girne temizlik şirketi",
-    intro: "Girne’de ev, villa, ofis, mağaza ve turistik işletmeler için profesyonel temizlik planlanır.",
+    intro: "Girne’de villa, apartman, ofis ve işletmelerde temizlik işi güzel plan ister. Sanu Temizlik, yoğun sezonda da sakin zamanda da işi aksatmadan toparlar.",
     districts: "Girne merkez, Alsancak, Lapta, Ozanköy, Çatalköy ve çevre bölgeler"
   },
   {
@@ -27,7 +27,7 @@ const cities = [
     name: "Gazi Mağusa",
     title: "Gazi Mağusa Temizlik Şirketi",
     keyword: "gazi mağusa temizlik şirketi",
-    intro: "Gazi Mağusa’da tek seferlik, dönemsel ve düzenli temizlik ihtiyaçları için hızlı teklif alın.",
+    intro: "Gazi Mağusa’da ev, iş yeri ve yeni teslim alanlar için temizliği son dakikaya bırakmadan planlamak isterseniz Sanu Temizlik hızlıca organize olur.",
     districts: "Mağusa merkez, Yeniboğaziçi, Salamis, Tuzla ve çevre bölgeler"
   },
   {
@@ -35,7 +35,7 @@ const cities = [
     name: "Güzelyurt",
     title: "Güzelyurt Temizlik Şirketi",
     keyword: "güzelyurt temizlik şirketi",
-    intro: "Güzelyurt ve çevresinde ev, ofis, apartman ve işletme temizliği için Sanu Temizlik ekibiyle görüşün.",
+    intro: "Güzelyurt ve çevresinde eviniz, apartmanınız ya da iş yeriniz için temiz, ferah ve güven veren bir sonuç istiyorsanız Sanu Temizlik işi sahiplenir.",
     districts: "Güzelyurt merkez, Lefke, Gemikonağı ve çevre bölgeler"
   }
 ];
@@ -130,7 +130,7 @@ const services = [
     name: "Halı Yıkama",
     icon: "scan",
     category: "Kumaş Yüzey Bakımı",
-    image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1400&q=82",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=82",
     short: "Halı, kilim ve kumaş yüzeyler için hijyen odaklı yıkama ve bakım yönlendirmesi.",
     details: [
       "Halı türü, ölçü, leke durumu ve teslim beklentisine göre hizmet kapsamı netleştirilir.",
@@ -144,7 +144,7 @@ const services = [
     name: "Apartman Merdiven Temizliği",
     icon: "stairs",
     category: "Düzenli Temizlik",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=82",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=82",
     short: "Apartman girişleri, merdivenler, korkuluklar, asansör çevresi ve ortak alanlar için düzenli temizlik.",
     details: [
       "Haftalık veya aylık periyotlarla apartman ortak alanları planlı şekilde temizlenir.",
@@ -186,7 +186,7 @@ const services = [
     name: "Mağaza Temizliği",
     icon: "store",
     category: "Kurumsal Temizlik",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=82",
+    image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1400&q=82",
     short: "Mağaza, showroom, restoran giriş alanı ve ticari işletmeler için vitrini güçlü temizlik.",
     details: [
       "Zemin, raf çevresi, kasa alanı, soyunma kabini, cam ve giriş noktaları programa dahil edilebilir.",
@@ -200,7 +200,7 @@ const services = [
     name: "Dış Cephe Cam Temizliği",
     icon: "panels-top-left",
     category: "Özel Temizlik",
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=82",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=82",
     short: "İş yeri, mağaza, bina ve villa camlarında dış cephe ve erişimi zor cam temizliği.",
     details: [
       "Vitrin, giriş camı, ofis cephesi ve ulaşılması zor camlar için alan incelemesi yapılır.",
@@ -326,7 +326,7 @@ function head({ title, description, keywords, canonical, depth = 0, extra = "" }
   <link rel="icon" href="${root}assets/img/sanu-temizlik-logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { colors: { brand: { 50: "#f0fbff", 100: "#e8f7ff", 600: "#119be0", 700: "#0879b8", 800: "#075778", 900: "#043f5f" } } } } };
+    tailwind.config = { theme: { extend: { colors: { brand: { 50: "#f0fbff", 100: "#e5f7fd", 600: "#00a7e1", 700: "#008fd0", 800: "#075b80", 900: "#034667" } } } } };
   </script>
   <link rel="stylesheet" href="${root}assets/css/styles.css">
   <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -462,6 +462,59 @@ function serviceGrid(depth = 0, city = null) {
   return services.map((service) => serviceCard(service, depth, city)).join("");
 }
 
+function localTone(city) {
+  if (!city) {
+    return "Kıbrıs’ta evin, ofisin ya da işletmenin düzeni bozuldu mu insan hızlı, güvenilir ve sözüne sadık bir ekip ister. Sanu Temizlik, işi büyütmeden dinler, ihtiyacı netleştirir ve temiz pak bir sonuç için planlı çalışır.";
+  }
+
+  const tones = {
+    lefkosa: "Lefkoşa’da hayat hızlı akar; bazen ev, ofis ya da apartman bir anda elden geçsin ister. Sanu Temizlik, Çağlayan’dan Gönyeli’ye kadar işi uzatmadan, temiz pak ve iç rahatlatan bir hizmet sunar.",
+    girne: "Girne’de evler, villalar, mağazalar ve turistik işletmeler sezon temposunu iyi bilir. Biz de işi ona göre planlar, misafir gelmeden ya da mesai başlamadan alanı pırıl pırıl hazırlamaya bakarız.",
+    "gazi-magusa": "Gazi Mağusa’da ister yeni teslim daire olsun ister yoğun kullanılan bir iş yeri, temizlik düzgün yapılınca alanın havası değişir. Sanu Temizlik, işi baştan konuşur ve söz verdiği gibi tamamlar.",
+    guzelyurt: "Güzelyurt’ta ev, apartman ve işletme temizliğinde en kıymetli şey güven ve devamlılıktır. Sanu Temizlik, aynı özeni her gelişinde korumaya çalışan bir ekip anlayışıyla hizmet verir."
+  };
+
+  return tones[city.slug] || city.intro;
+}
+
+function serviceWarmIntro(service, city = null) {
+  const place = city ? `${city.name} bölgesinde` : "Kıbrıs genelinde";
+  return `${place} ${service.name.toLowerCase()} ihtiyacınız varsa önce neye ihtiyaç olduğunu güzelce konuşuruz. Metrekare, kullanım yoğunluğu, zaman aralığı ve özel beklentiler netleşince ekip, malzeme ve iş sırası ona göre hazırlanır. Böylece hem sürpriz azalır hem de ortaya içinize sinen bir sonuç çıkar.`;
+}
+
+function serviceFor(service) {
+  const map = {
+    "ev-temizligi": "Taşınma öncesi/sonrası evler, düzenli temizlik isteyen aileler, misafir öncesi hızlı toparlanması gereken yaşam alanları için uygundur.",
+    "ofis-temizligi": "Ofisler, ajanslar, muhasebe büroları, çağrı merkezleri ve düzenli hijyen standardı isteyen çalışma alanları için uygundur.",
+    "insaat-sonrasi-temizlik": "Tadilat sonrası evler, yeni teslim daireler, mağazalar, ofisler ve inşaat tozu kalan alanlar için uygundur.",
+    "mermer-cilalama": "Apartman girişleri, mağazalar, villalar, ofis zeminleri ve parlaklığını kaybetmiş mermer yüzeyler için uygundur.",
+    "hasere-ilaclama": "Evler, restoranlar, depolar, apartman ortak alanları, ofisler ve haşere riski oluşan işletmeler için uygundur.",
+    "koltuk-yikama": "Ev koltukları, ofis bekleme alanları, klinik oturma grupları ve yoğun kullanılan kumaş yüzeyler için uygundur.",
+    "hali-yikama": "Ev, ofis ve işletmelerde kullanılan halı, kilim ve kumaş zemin talepleri için uygundur.",
+    "apartman-merdiven-temizligi": "Apartman yönetimleri, site girişleri, merdiven boşlukları, asansör çevresi ve ortak alanlar için uygundur.",
+    "duzenli-temizlik": "Haftalık veya aylık temizlik isteyen evler, ofisler, mağazalar, klinikler ve apartmanlar için uygundur.",
+    "hastane-temizligi": "Klinikler, muayenehaneler, sağlık merkezleri, bekleme salonları ve hassas hijyen isteyen alanlar için uygundur.",
+    "magaza-temizligi": "Mağazalar, showroomlar, restoran girişleri, vitrinli işletmeler ve müşteri trafiği yoğun alanlar için uygundur.",
+    "dis-cephe-cam-temizligi": "Vitrinler, ofis cepheleri, mağaza camları, villa camları ve erişimi zor dış yüzeyler için uygundur.",
+    "elektrik-servisi": "Ev, ofis ve işletmelerde küçük elektrik arızası, aydınlatma, priz, anahtar ve kontrol işleri için uygundur.",
+    "su-tesisati-servisi": "Musluk, lavabo, sifon, gider, küçük kaçak ve planlı tesisat bakım talepleri için uygundur.",
+    "bakim-onarim": "Ev, ofis, mağaza ve apartmanlarda küçük tamirat, bakım ve işletme içi düzenleme işleri için uygundur.",
+    "montaj-servisi": "Raf, askı, küçük mobilya, aksesuar ve işletme ekipmanı montajı gereken alanlar için uygundur."
+  };
+
+  return map[service.slug] || `${service.name} ihtiyacı olan ev, ofis ve işletmeler için uygundur.`;
+}
+
+function serviceSeoPhrase(service, city = null) {
+  const place = city ? city.name : "Kıbrıs";
+  const localKeyword = city ? city.keyword : "kıbrıs temizlik şirketi";
+  const extra = service.slug === "hali-yikama" || service.slug === "koltuk-yikama"
+    ? " Özellikle Lefkoşa tarafında halı ve koltuk gibi kumaş yüzeylerde temiz, ferah ve güvenilir hizmet arayanlar için doğru planlama önemlidir."
+    : "";
+
+  return `${place} içinde güvenilir bir ekip ararken sadece fiyat değil, sözünde durma, doğru zamanlama ve temiz iş de önemlidir. Bu yüzden <strong>${localKeyword}</strong>, <strong>kıbrıs temizlik şirketi</strong> ve <strong>kktc temizlik şirketi</strong> aramalarında kullanıcıya gerçekten fayda veren, açık ve anlaşılır hizmet sayfaları hazırladık.${extra}`;
+}
+
 function localBusinessSchema() {
   return `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
@@ -505,9 +558,9 @@ function homePage() {
     <section class="hero-cleaning min-h-[76vh]">
       <div class="mx-auto flex min-h-[76vh] max-w-7xl items-center px-4 py-20 lg:px-8">
         <div class="max-w-3xl text-white">
-          <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">Kıbrıs temizlik şirketi</p>
+          <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">Kıbrıs’ta temiz pak hizmet</p>
           <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">Sanu Temizlik ve Ticaret Ltd.</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">2012’den beri Lefkoşa merkezli profesyonel ekibimizle <strong>lefkoşa temizlik şirketi</strong>, <strong>girne temizlik şirketi</strong>, <strong>kıbrıs temizlik şirketi</strong>, <strong>kktc temizlik şirketi</strong> ve <strong>lefkoşa halı yıkama</strong> aramalarına uygun geniş kapsamlı hizmet sunuyoruz.</p>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">Eviniz, ofisiniz ya da işletmeniz “bir el atsak da ferahlasa” dediğinde Sanu Temizlik yanınızda. 2012’den beri Lefkoşa merkezli ekibimizle <strong>lefkoşa temizlik şirketi</strong>, <strong>girne temizlik şirketi</strong>, <strong>kıbrıs temizlik şirketi</strong>, <strong>kktc temizlik şirketi</strong> ve <strong>lefkoşa halı yıkama</strong> arayanlara sıcak, güvenilir ve düzgün planlanmış hizmet sunuyoruz.</p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a class="btn-white" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="send" class="h-5 w-5"></i><span>WhatsApp’tan Teklif Al</span></a>
             <a class="btn-secondary" href="#services"><i data-lucide="sparkles" class="h-5 w-5"></i><span>Hizmetleri İncele</span></a>
@@ -528,8 +581,8 @@ function homePage() {
       <div class="mx-auto max-w-7xl px-4 lg:px-8">
         <div class="max-w-3xl seo-rich">
           <p class="section-kicker">Hizmetlerimiz</p>
-          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Temizlik, düzenli bakım ve teknik servis işleri tek merkezde</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Ev temizliği, ofis temizliği, apartman merdiven temizliği, hastane ve klinik temizliği, mağaza temizliği, dış cephe cam temizliği, elektrik, su, bakım onarım ve montaj işleri için <strong>kıbrıs temizlik şirketi</strong> deneyimiyle hızlı teklif alın.</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Temizlik, düzenli bakım ve teknik servis işlerini biz toparlarız</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Ev temizliği, ofis temizliği, apartman merdiven temizliği, hastane ve klinik temizliği, mağaza temizliği, dış cephe cam temizliği, elektrik, su, bakım onarım ve montaj işleri için ayrı ayrı usta aramanıza gerek kalmasın. <strong>Kıbrıs temizlik şirketi</strong> ararken beklenti aslında nettir: zamanında gelinsin, iş güzel yapılsın, iletişim açık olsun. Biz de tam buna göre çalışırız.</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">${serviceGrid(0)}</div>
       </div>
@@ -539,8 +592,8 @@ function homePage() {
       <div class="mx-auto max-w-7xl px-4 lg:px-8">
         <div class="max-w-3xl">
           <p class="section-kicker">Bölgeler</p>
-          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Şehir bazlı SEO uyumlu temizlik sayfaları</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Her şehir için ayrı hizmet sayfaları oluşturuldu. Böylece kullanıcılar Lefkoşa, Girne, Gazi Mağusa ve Güzelyurt’ta ihtiyaç duyduğu hizmete doğrudan ulaşabilir.</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Lefkoşa’dan Girne’ye, Mağusa’dan Güzelyurt’a kadar</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Her bölgenin temposu başka. Lefkoşa’da ofis yoğunluğu, Girne’de villa ve işletme trafiği, Mağusa’da yeni teslim alanlar, Güzelyurt’ta düzenli bakım ihtiyacı öne çıkar. Bu yüzden her şehir için ayrı sayfalar hazırladık; aradığınız hizmete doğrudan ulaşın, WhatsApp’tan hızlıca konuşalım.</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           ${cities.map((city) => `<a class="city-card block bg-slate-50 p-6" href="${city.slug}/"><h3 class="text-xl font-black text-brand-900">${city.title}</h3><p class="mt-3 text-sm leading-6 text-slate-600">${city.intro}</p><p class="mt-4 text-sm font-black text-brand-700">Tüm şehir hizmetlerini incele</p></a>`).join("")}
@@ -552,8 +605,8 @@ function homePage() {
       <div class="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div class="seo-rich">
           <p class="section-kicker">Servis Talebi</p>
-          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">WhatsApp’a yönlenen hızlı teklif formu</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Formu doldurduğunuzda bilgileriniz otomatik WhatsApp mesajına çevrilir. E-posta gönderimi yapılmaz; hızlı iletişim için doğrudan WhatsApp açılır.</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">İşinizi anlatın, WhatsApp mesajınız hazır açılsın</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Uzun uzun form doldurup cevap beklemeyesiniz diye talebinizi WhatsApp’a çeviriyoruz. Şehir, hizmet, tarih ve notunuzu yazın; mesaj otomatik hazırlansın, biz de size en kısa zamanda dönüş yapalım.</p>
           <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1100&q=80" alt="Profesyonel temizlik malzemeleri ve hijyen ekipmanı" class="mt-8 h-72 w-full rounded-lg object-cover" loading="lazy">
         </div>
         ${quoteForm()}
@@ -565,10 +618,10 @@ function homePage() {
         <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=1100&q=80" alt="Sanu Temizlik profesyonel temizlik ekipmanı" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
         <div class="content-panel seo-rich">
           <p class="section-kicker">Hakkımızda</p>
-          <h2 class="mt-3 text-3xl sm:text-4xl">2012’den beri Lefkoşa merkezli güvenilir hizmet</h2>
-          <p class="mt-5">Sanu Temizlik ve Ticaret Ltd., Tahsin Yazıcı Sok. No:5 Çağlayan Lefkoşa / Kıbrıs adresinden Kıbrıs genelinde bireysel ve kurumsal müşterilere hizmet verir. İster <strong>lefkoşa temizlik şirketi</strong>, ister <strong>girne temizlik şirketi</strong>, ister <strong>kktc temizlik şirketi</strong> arıyor olun; tek seferlik temizlikten düzenli bakım planına kadar kapsamlı çözüm sunar.</p>
-          <h3 class="mt-8 text-2xl">Temizlik ve teknik servis birlikte</h3>
-          <p class="mt-4">Apartman merdiven temizliği, ofis, hastane, mağaza ve dış cephe cam temizliği gibi düzenli işler ile elektrik, su tesisatı, bakım onarım ve montaj gibi teknik servis ihtiyaçları aynı teklif hattından planlanabilir.</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl">2012’den beri Lefkoşa merkezli, sözüne sadık ekip</h2>
+          <p class="mt-5">Sanu Temizlik ve Ticaret Ltd., Tahsin Yazıcı Sok. No:5 Çağlayan Lefkoşa / Kıbrıs adresinden Kıbrıs genelinde bireysel ve kurumsal müşterilere hizmet verir. Bizi arayanların çoğu “iş düzgün olsun, içimiz rahat etsin” der. İster <strong>lefkoşa temizlik şirketi</strong>, ister <strong>girne temizlik şirketi</strong>, ister <strong>kktc temizlik şirketi</strong> arıyor olun; talebi dinler, uygun planı çıkarır, işi temiz şekilde teslim etmeye bakarız.</p>
+          <h3 class="mt-8 text-2xl">Temizlik ve teknik servis aynı pratik hatta</h3>
+          <p class="mt-4">Apartman merdiven temizliği, ofis, hastane, mağaza ve dış cephe cam temizliği gibi düzenli işler ile elektrik, su tesisatı, bakım onarım ve montaj gibi teknik servis ihtiyaçlarını aynı WhatsApp hattından konuşabilirsiniz. “Kimle görüşecektik?” diye uğraşmayın; önce yazın, beraber netleştirelim.</p>
         </div>
       </div>
     </section>`;
@@ -589,7 +642,7 @@ function servicesIndexPage() {
         <div class="max-w-3xl seo-rich">
           <p class="section-kicker">Hizmetlerimiz</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Temizlik ve Teknik Servis Hizmetleri</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Sanu Temizlik; <strong>kıbrıs temizlik şirketi</strong> ve <strong>kktc temizlik şirketi</strong> arayan kullanıcılar için ev, ofis, apartman, sağlık, mağaza, cam, halı-koltuk yıkama ve teknik servis çözümlerini tek çatı altında sunar.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">Temizlik işi sadece silip süpürmek değildir; alanın havasını değiştirmek, iş yerinde güven vermek, evde ferahlık yaratmaktır. Sanu Temizlik; <strong>kıbrıs temizlik şirketi</strong> ve <strong>kktc temizlik şirketi</strong> arayanlar için ev, ofis, apartman, sağlık, mağaza, cam, halı-koltuk yıkama ve teknik servis çözümlerini tek çatı altında toplar.</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">${serviceGrid(1)}</div>
       </div>
@@ -612,8 +665,8 @@ function cityPage(city) {
         <div class="seo-rich">
           <p class="section-kicker">${city.name}</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">${city.title}</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">${city.intro} <strong>${city.keyword}</strong>, <strong>kıbrıs temizlik şirketi</strong> ve <strong>kktc temizlik şirketi</strong> aramalarına uygun yerel hizmet sayfalarından teklif alabilirsiniz.</p>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Hizmet bölgeleri: ${city.districts}. Tüm talepler WhatsApp üzerinden hızlıca değerlendirilir.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">${city.intro} <strong>${city.keyword}</strong> ararken insanın beklediği şey aslında çok basit: zamanında gelen, ne yapacağını bilen ve iş bitince arkasında ferah bir alan bırakan ekip. Sanu Temizlik tam da bu anlayışla çalışır.</p>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Hizmet bölgeleri: ${city.districts}. <strong>Kıbrıs temizlik şirketi</strong> ve <strong>kktc temizlik şirketi</strong> aramalarında bölgenize uygun hizmeti seçin, WhatsApp’tan detayları konuşalım.</p>
           <a class="btn-primary mt-8" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="send" class="h-5 w-5"></i><span>Bu Şehir İçin Teklif Al</span></a>
         </div>
         <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1100&q=80" alt="${city.title} profesyonel temizlik hizmeti" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
@@ -622,7 +675,7 @@ function cityPage(city) {
     <section class="py-16">
       <div class="mx-auto max-w-7xl px-4 lg:px-8">
         <h2 class="text-3xl font-black text-slate-950">${city.name} Hizmetleri</h2>
-        <p class="mt-3 max-w-3xl text-lg leading-8 text-slate-600">Aşağıdaki tüm hizmetler ${city.name} için ayrı SEO sayfası olarak yapılandırıldı.</p>
+        <p class="mt-3 max-w-3xl text-lg leading-8 text-slate-600">${city.name} içinde hangi hizmete ihtiyacınız varsa doğrudan ilgili sayfaya geçebilirsiniz. Her sayfada kapsamı, uygun kullanım alanlarını ve WhatsApp teklif formunu bulacaksınız.</p>
         <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">${serviceGrid(1, city)}</div>
       </div>
     </section>`;
@@ -646,7 +699,7 @@ function serviceContent(service, city = null) {
         <div class="max-w-3xl">
           <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">${city ? city.name : service.category}</p>
           <h1 class="text-4xl font-black leading-tight sm:text-5xl">${cityText}${service.name}</h1>
-          <p class="mt-5 text-lg leading-8 text-sky-50">${service.short}</p>
+          <p class="mt-5 text-lg leading-8 text-sky-50">${service.short} İhtiyacınızı anlatın, gerisini birlikte netleştirelim; aceleye getirmeden, düzgün ve güven veren bir plan çıkaralım.</p>
           <a class="btn-white mt-8" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="message-circle" class="h-5 w-5"></i><span>WhatsApp’tan Teklif Al</span></a>
         </div>
       </div>
@@ -656,13 +709,26 @@ function serviceContent(service, city = null) {
       <div class="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[1fr_0.8fr] lg:px-8">
         <article class="content-panel seo-rich">
           <p class="section-kicker">${service.category}</p>
-          <h2 class="mt-3 text-3xl sm:text-4xl">${cityText}${service.name} kapsamı</h2>
-          <p class="mt-5">${city ? `${city.name} bölgesinde` : "Kıbrıs genelinde"} ${service.name.toLowerCase()} için <strong>${cityKeyword}</strong>, <strong>kıbrıs temizlik şirketi</strong> ve <strong>kktc temizlik şirketi</strong> aramalarında ihtiyaç duyulan yerel hizmet bilgisi bu sayfada toplanmıştır.</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl">${cityText}${service.name} için temiz, net ve iç rahatlatan hizmet</h2>
+          <p class="mt-5">${localTone(city)}</p>
+          <p class="mt-5">${serviceWarmIntro(service, city)}</p>
+          <p class="mt-5">${serviceSeoPhrase(service, city)}</p>
+          <h3 class="mt-8 text-2xl">Neler yapıyoruz?</h3>
           <ul class="mt-6 grid gap-4">
             ${service.details.map((item) => `<li class="flex gap-3 rounded-lg border border-sky-100 bg-slate-50 p-4"><i data-lucide="check-circle-2" class="mt-1 h-5 w-5 shrink-0 text-brand-700"></i><span class="leading-7 text-slate-700">${item}</span></li>`).join("")}
           </ul>
-          <h3 class="mt-8 text-2xl">SEO odaklı yerel hizmet</h3>
-          <p class="mt-4">Sanu Temizlik ve Ticaret Ltd.; <strong>${service.keywords.join("</strong>, <strong>")}</strong> ihtiyaçlarında hızlı iletişim ve net teklif süreci sunar. ${city ? `${city.name} için adres, tarih ve hizmet detayını formdan göndererek WhatsApp teklif mesajı oluşturabilirsiniz.` : "Şehir seçerek hizmetinizi daha net planlayabilirsiniz."}</p>
+          <div class="mt-8 grid gap-5 md:grid-cols-2">
+            <div class="rounded-lg border border-sky-100 bg-slate-50 p-5">
+              <h3 class="text-xl font-black text-slate-950">Kimler için uygun?</h3>
+              <p class="mt-3">${serviceFor(service)}</p>
+            </div>
+            <div class="rounded-lg border border-sky-100 bg-slate-50 p-5">
+              <h3 class="text-xl font-black text-slate-950">Nasıl ilerleriz?</h3>
+              <p class="mt-3">Önce WhatsApp’tan adres, tarih, alan bilgisi ve varsa fotoğraf alırız. Sonra işi açık açık konuşur, uygun zamanı belirler ve ekibi ona göre hazırlarız. Kısacası “olur, bakarız” değil; net plan, net iletişim.</p>
+            </div>
+          </div>
+          <h3 class="mt-8 text-2xl">Yerel aramada doğru hizmete ulaşın</h3>
+          <p class="mt-4">Sanu Temizlik ve Ticaret Ltd.; <strong>${service.keywords.join("</strong>, <strong>")}</strong> ihtiyaçlarında sıcak iletişim, profesyonel ekip ve anlaşılır teklif süreci sunar. ${city ? `${city.name} için hizmet detayını formdan gönderdiğinizde WhatsApp mesajınız hazır şekilde açılır.` : "Şehir seçerek talebinizi daha doğru yönlendirebilirsiniz."}</p>
         </article>
         <aside>
           <img src="${service.image}" alt="${cityText}${service.name} için kaliteli hizmet görseli" class="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy">
@@ -734,7 +800,7 @@ function contactPage() {
         <div class="seo-rich">
           <p class="section-kicker">İletişim</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Sanu Temizlik İletişim</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Sanu Temizlik ve Ticaret Ltd. için teklif, randevu ve servis taleplerinizi iletişim formuyla WhatsApp’a aktarabilirsiniz. <strong>lefkoşa temizlik şirketi</strong>, <strong>girne temizlik şirketi</strong>, <strong>kıbrıs temizlik şirketi</strong>, <strong>kktc temizlik şirketi</strong> ve <strong>lefkoşa halı yıkama</strong> talepleri için hızlı dönüş yapılır.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">Aklınızdaki işi anlatın, biz birlikte netleştirelim. Sanu Temizlik ve Ticaret Ltd. için teklif, randevu ve servis taleplerinizi iletişim formuyla doğrudan WhatsApp’a aktarabilirsiniz. <strong>Lefkoşa temizlik şirketi</strong>, <strong>Girne temizlik şirketi</strong>, <strong>Kıbrıs temizlik şirketi</strong>, <strong>KKTC temizlik şirketi</strong> ve <strong>Lefkoşa halı yıkama</strong> taleplerinde hızlı ve samimi dönüş yapmaya özen gösteririz.</p>
           <div class="mt-8 grid gap-4">
             <a class="surface flex items-center gap-4 p-4" href="tel:+905338828989"><span class="icon-tile"><i data-lucide="phone" class="h-5 w-5"></i></span><span><strong class="block text-slate-950">Telefon / WhatsApp</strong>+90 533 882 89 89</span></a>
             <a class="surface flex items-center gap-4 p-4" href="mailto:info@sanutemizlik.com"><span class="icon-tile"><i data-lucide="mail" class="h-5 w-5"></i></span><span><strong class="block text-slate-950">E-posta</strong>info@sanutemizlik.com</span></a>
