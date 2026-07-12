@@ -377,11 +377,14 @@ function head({ title, description, keywords, canonical, depth = 0, extra = "", 
   <meta name="description" content="${esc(description)}">
   <meta name="keywords" content="${esc(keywords)}">
   <meta name="robots" content="${esc(robots)}">
+  <meta name="googlebot" content="${esc(robots)},max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${esc(canonical)}">
   <meta property="og:image" content="${siteUrl}/assets/img/sanu-temizlik-logo.png">
+  <meta property="og:locale" content="tr_CY">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="${esc(canonical)}">
   <link rel="icon" href="${root}assets/img/sanu-temizlik-logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -577,37 +580,189 @@ function serviceSeoPhrase(service, city = null) {
 }
 
 function localBusinessSchema() {
-  return `<script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+  return {
+    "@type": ["LocalBusiness", "CleaningService"],
+    "@id": `${siteUrl}/#localbusiness`,
     name: "Sanu Temizlik ve Ticaret Ltd.",
+    legalName: "Sanu Temizlik ve Ticaret Ltd.",
     image: `${siteUrl}/assets/img/sanu-temizlik-logo.png`,
+    logo: `${siteUrl}/assets/img/sanu-temizlik-logo.png`,
     url: siteUrl,
     email: "info@sanutemizlik.com",
     telephone: whatsappNumber,
     foundingDate: "2012",
+    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Tahsin Yazıcı Sok. No:5 Çağlayan",
       addressLocality: "Lefkoşa",
       addressCountry: "CY"
     },
-    areaServed: cities.map((city) => city.name),
+    areaServed: cities.map((city) => ({ "@type": "City", name: city.name })),
+    contactPoint: [{
+      "@type": "ContactPoint",
+      telephone: whatsappNumber,
+      contactType: "customer service",
+      availableLanguage: ["tr", "en", "ru"],
+      areaServed: "CY"
+    }],
+    hasMap: "https://www.google.com/maps?q=Sanu%20Temizlik%20Tahsin%20Yaz%C4%B1c%C4%B1%20Sok.%20No%3A5%20%C3%87a%C4%9Flayan%20Lefko%C5%9Fa%20K%C4%B1br%C4%B1s",
+    knowsAbout: services.map((service) => service.name),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Sanu Temizlik Hizmetleri",
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.name,
+          serviceType: service.category,
+          url: `${siteUrl}/hizmetler/${service.slug}/`
+        }
+      }))
+    },
     sameAs: [whatsappUrl]
+  };
+}
+
+function webSiteSchema() {
+  return {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: "Sanu Temizlik ve Ticaret Ltd.",
+    url: siteUrl,
+    inLanguage: "tr",
+    publisher: { "@id": `${siteUrl}/#localbusiness` }
+  };
+}
+
+function breadcrumbSchema(canonical, title) {
+  const path = new URL(canonical).pathname;
+  const segments = path.split("/").filter(Boolean);
+  const items = [{ name: "Ana Sayfa", url: `${siteUrl}/` }];
+
+  if (segments[0] === "hizmetler") {
+    items.push({ name: "Hizmetler", url: `${siteUrl}/hizmetler/` });
+    if (segments[1]) {
+      const service = services.find((item) => item.slug === segments[1]);
+      items.push({ name: service?.name || title, url: canonical });
+    }
+  } else if (segments[0]) {
+    const city = cities.find((item) => item.slug === segments[0]);
+    if (city) {
+      items.push({ name: city.name, url: `${siteUrl}/${city.slug}/` });
+      if (segments[1]) {
+        const service = services.find((item) => item.slug === segments[1]);
+        items.push({ name: service ? `${city.name} ${service.name}` : title, url: canonical });
+      }
+    } else if (segments[0] === "iletisim") {
+      items.push({ name: "İletişim", url: canonical });
+    } else if (segments[0] === "site-haritasi") {
+      items.push({ name: "Site Haritası", url: canonical });
+    }
+  }
+
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url
+    }))
+  };
+}
+
+function pageSchema({ canonical, title, description }) {
+  return {
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: "tr",
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    about: { "@id": `${siteUrl}/#localbusiness` },
+    breadcrumb: { "@id": `${canonical}#breadcrumb` }
+  };
+}
+
+function defaultFaqs(service = null, city = null) {
+  const serviceName = service?.name || "temizlik hizmeti";
+  const cityName = city?.name || "Kıbrıs";
+  return [
+    {
+      q: `${cityName} ${serviceName} için nasıl teklif alabilirim?`,
+      a: "Sayfadaki formu doldurduğunuzda şehir, hizmet, tarih ve notunuz WhatsApp mesajına dönüştürülür. Ekibimiz talebinizi görüp kısa sürede dönüş yapar."
+    },
+    {
+      q: "Sanu Temizlik hangi bölgelerde hizmet veriyor?",
+      a: "Sanu Temizlik Lefkoşa merkezlidir; Lefkoşa, Girne, Gazi Mağusa, Güzelyurt ve çevre bölgelerde temizlik ve teknik servis talepleri alır."
+    },
+    {
+      q: "Hizmet öncesinde hangi bilgileri paylaşmalıyım?",
+      a: "Adres, tercih edilen tarih, hizmet türü, alan büyüklüğü ve varsa fotoğraf veya kısa video paylaşmanız planlamayı hızlandırır."
+    }
+  ];
+}
+
+function faqSchema(faqs, canonical) {
+  return {
+    "@type": "FAQPage",
+    "@id": `${canonical}#faq`,
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a
+      }
+    }))
+  };
+}
+
+function faqSection(faqs) {
+  if (!faqs?.length) return "";
+  return `
+    <section class="bg-white py-16 sm:py-20" id="faq">
+      <div class="mx-auto max-w-4xl px-4 lg:px-8">
+        <p class="section-kicker">Sık Sorulan Sorular</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950">Merak edilenler</h2>
+        <div class="mt-8 grid gap-4">
+          ${faqs.map((faq) => `<details class="surface p-5"><summary class="cursor-pointer text-lg font-black text-slate-950">${esc(faq.q)}</summary><p class="mt-3 leading-7 text-slate-600">${esc(faq.a)}</p></details>`).join("")}
+        </div>
+      </div>
+    </section>`;
+}
+
+function schemaScript(items) {
+  return `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": items
   })}</script>`;
 }
 
-function layout({ title, description, keywords, canonical, depth = 0, body, extraHead = "", robots = "index,follow" }) {
+function layout({ title, description, keywords, canonical, depth = 0, body, extraHead = "", robots = "index,follow", faqs = defaultFaqs(), schema = [] }) {
+  const structuredData = [
+    localBusinessSchema(),
+    webSiteSchema(),
+    pageSchema({ canonical, title, description }),
+    breadcrumbSchema(canonical, title),
+    ...(faqs?.length ? [faqSchema(faqs, canonical)] : []),
+    ...schema
+  ];
   return `<!doctype html>
 <html lang="tr">
 <head>
-${head({ title, description, keywords, canonical, depth, extra: `${localBusinessSchema()}${extraHead}`, robots })}
+${head({ title, description, keywords, canonical, depth, extra: `${schemaScript(structuredData)}${extraHead}`, robots })}
 </head>
 <body class="bg-slate-50">
   <a class="skip-link" href="#main">İçeriğe geç</a>
   ${header(depth)}
   <main id="main">
     ${body}
+    ${faqSection(faqs)}
   </main>
   ${footer(depth)}
 </body>
@@ -692,6 +847,12 @@ function homePage() {
     description: "Sanu Temizlik ve Ticaret Ltd. Lefkoşa merkezli Kıbrıs temizlik şirketi. Ev, ofis, apartman, hastane, mağaza, dış cephe cam, halı-koltuk yıkama ve teknik servis hizmetleri.",
     keywords: "lefkoşa temizlik şirketi, girne temizlik şirketi, kıbrıs temizlik şirketi, kktc temizlik şirketi, lefkoşa halı yıkama",
     canonical: `${siteUrl}/`,
+    schema: [
+      itemListSchema("Sanu Temizlik Öne Çıkan Hizmetler", services.map((service) => ({
+        name: service.name,
+        url: `${siteUrl}/hizmetler/${service.slug}/`
+      })), `${siteUrl}/`)
+    ],
     body
   });
 }
@@ -715,6 +876,12 @@ function servicesIndexPage() {
     keywords: "kıbrıs temizlik şirketi, kktc temizlik şirketi, lefkoşa temizlik şirketi, girne temizlik şirketi",
     canonical: `${siteUrl}/hizmetler/`,
     depth: 1,
+    schema: [
+      itemListSchema("Sanu Temizlik Hizmet Listesi", services.map((service) => ({
+        name: service.name,
+        url: `${siteUrl}/hizmetler/${service.slug}/`
+      })), `${siteUrl}/hizmetler/`)
+    ],
     body
   });
 }
@@ -747,6 +914,12 @@ function cityPage(city) {
     keywords: `${city.keyword}, kıbrıs temizlik şirketi, kktc temizlik şirketi, lefkoşa halı yıkama`,
     canonical: `${siteUrl}/${city.slug}/`,
     depth: 1,
+    schema: [
+      itemListSchema(`${city.name} Temizlik Hizmetleri`, services.map((service) => ({
+        name: `${city.name} ${service.name}`,
+        url: `${siteUrl}/${city.slug}/${service.slug}/`
+      })), `${siteUrl}/${city.slug}/`)
+    ],
     body
   });
 }
@@ -812,44 +985,64 @@ function serviceContent(service, city = null) {
     </section>`;
 }
 
-function servicePage(service) {
-  const extraHead = `<script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
+function serviceSchema(service, city = null) {
+  const url = city ? `${siteUrl}/${city.slug}/${service.slug}/` : `${siteUrl}/hizmetler/${service.slug}/`;
+  return {
     "@type": "Service",
-    name: service.name,
-    provider: { "@type": "LocalBusiness", name: "Sanu Temizlik ve Ticaret Ltd.", telephone: whatsappNumber },
-    areaServed: cities.map((city) => city.name),
-    serviceType: service.category
-  })}</script>`;
+    "@id": `${url}#service`,
+    name: city ? `${city.name} ${service.name}` : service.name,
+    description: service.short,
+    serviceType: service.category,
+    provider: { "@id": `${siteUrl}/#localbusiness` },
+    areaServed: city ? { "@type": "City", name: city.name } : cities.map((item) => ({ "@type": "City", name: item.name })),
+    url,
+    image: service.image,
+    offers: {
+      "@type": "Offer",
+      url,
+      availability: "https://schema.org/InStock",
+      priceCurrency: "TRY",
+      seller: { "@id": `${siteUrl}/#localbusiness` }
+    }
+  };
+}
 
+function itemListSchema(name, items, canonical) {
+  return {
+    "@type": "ItemList",
+    "@id": `${canonical}#itemlist`,
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url
+    }))
+  };
+}
+
+function servicePage(service) {
   return layout({
     title: `${service.name} | Sanu Temizlik ve Ticaret Ltd.`,
     description: `${service.name} hizmeti için Sanu Temizlik’ten WhatsApp ile hızlı teklif alın. Lefkoşa, Girne, Gazi Mağusa ve Güzelyurt’ta profesyonel hizmet.`,
     keywords: `${service.keywords.join(", ")}, lefkoşa temizlik şirketi, girne temizlik şirketi, kıbrıs temizlik şirketi, kktc temizlik şirketi`,
     canonical: `${siteUrl}/hizmetler/${service.slug}/`,
     depth: 2,
-    extraHead,
+    faqs: defaultFaqs(service),
+    schema: [serviceSchema(service)],
     body: serviceContent(service)
   });
 }
 
 function cityServicePage(city, service) {
-  const extraHead = `<script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: `${city.name} ${service.name}`,
-    provider: { "@type": "LocalBusiness", name: "Sanu Temizlik ve Ticaret Ltd.", telephone: whatsappNumber },
-    areaServed: city.name,
-    serviceType: service.category
-  })}</script>`;
-
   return layout({
     title: `${city.name} ${service.name} | Sanu Temizlik ve Ticaret Ltd.`,
     description: `${city.name} ${service.name} hizmeti için WhatsApp ile hızlı teklif alın. ${city.title} Sanu Temizlik; profesyonel, düzenli ve SEO uyumlu yerel hizmet sayfası.`,
     keywords: `${city.keyword}, ${city.name.toLowerCase()} ${service.name.toLowerCase()}, ${service.keywords.join(", ")}, kıbrıs temizlik şirketi, kktc temizlik şirketi`,
     canonical: `${siteUrl}/${city.slug}/${service.slug}/`,
     depth: 2,
-    extraHead,
+    faqs: defaultFaqs(service, city),
+    schema: [serviceSchema(service, city)],
     body: serviceContent(service, city)
   });
 }
@@ -964,6 +1157,7 @@ function humanSitemapPage() {
     keywords: "site haritası, lefkoşa temizlik şirketi, girne temizlik şirketi, kıbrıs temizlik şirketi, lefkoşa halı yıkama",
     canonical: `${siteUrl}/site-haritasi/`,
     depth: 1,
+    faqs: [],
     body
   });
 }
@@ -1002,6 +1196,7 @@ function notFoundPage() {
     keywords: "404, site haritası, lefkoşa temizlik şirketi, kıbrıs temizlik şirketi, lefkoşa halı yıkama",
     canonical: `${siteUrl}/404.html`,
     robots: "noindex,follow",
+    faqs: [],
     body
   });
 }

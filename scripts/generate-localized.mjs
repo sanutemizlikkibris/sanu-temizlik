@@ -460,7 +460,212 @@ function altUrls(path) {
   <link rel="alternate" hreflang="x-default" href="${siteUrl}${path}">`;
 }
 
-function head({ lang, title, description, keywords, canonicalPath, localPath }) {
+function localBusinessSchema(lang) {
+  return {
+    "@type": ["LocalBusiness", "CleaningService"],
+    "@id": `${siteUrl}/#localbusiness`,
+    name: "Sanu Temizlik ve Ticaret Ltd.",
+    legalName: "Sanu Temizlik ve Ticaret Ltd.",
+    image: `${siteUrl}/assets/img/sanu-temizlik-logo.png`,
+    logo: `${siteUrl}/assets/img/sanu-temizlik-logo.png`,
+    url: siteUrl,
+    email: "info@sanutemizlik.com",
+    telephone: "+905338828989",
+    foundingDate: "2012",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Tahsin Yazıcı Sok. No:5 Çağlayan",
+      addressLocality: "Lefkoşa",
+      addressCountry: "CY"
+    },
+    areaServed: cities.map((city) => ({ "@type": "City", name: localizedCity(city, lang).name })),
+    contactPoint: [{
+      "@type": "ContactPoint",
+      telephone: "+905338828989",
+      contactType: "customer service",
+      availableLanguage: ["tr", "en", "ru"],
+      areaServed: "CY"
+    }],
+    hasMap: "https://www.google.com/maps?q=Sanu%20Temizlik%20Tahsin%20Yaz%C4%B1c%C4%B1%20Sok.%20No%3A5%20%C3%87a%C4%9Flayan%20Lefko%C5%9Fa%20K%C4%B1br%C4%B1s",
+    knowsAbout: services.map((service) => localizedService(service, lang).name),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: lang === "ru" ? "Услуги Sanu Cleaning" : "Sanu Cleaning Services",
+      itemListElement: services.map((service) => {
+        const ls = localizedService(service, lang);
+        return {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: ls.name,
+            serviceType: ls.category,
+            url: `${siteUrl}/${lang}/hizmetler/${service.slug}/`
+          }
+        };
+      })
+    },
+    sameAs: [whatsappUrl]
+  };
+}
+
+function webSiteSchema(lang) {
+  return {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/${lang}/#website`,
+    name: "Sanu Cleaning and Trading Ltd.",
+    url: `${siteUrl}/${lang}/`,
+    inLanguage: lang,
+    publisher: { "@id": `${siteUrl}/#localbusiness` }
+  };
+}
+
+function breadcrumbSchema(lang, canonicalPath, title) {
+  const canonical = `${siteUrl}/${lang}${canonicalPath}`;
+  const segments = canonicalPath.split("/").filter(Boolean);
+  const homeName = lang === "ru" ? "Главная" : "Home";
+  const items = [{ name: homeName, url: `${siteUrl}/${lang}/` }];
+
+  if (segments[0] === "hizmetler") {
+    items.push({ name: locale[lang].services, url: `${siteUrl}/${lang}/hizmetler/` });
+    if (segments[1]) {
+      const service = services.find((item) => item.slug === segments[1]);
+      items.push({ name: service ? localizedService(service, lang).name : title, url: canonical });
+    }
+  } else if (segments[0]) {
+    const city = cities.find((item) => item.slug === segments[0]);
+    if (city) {
+      const lc = localizedCity(city, lang);
+      items.push({ name: lc.name, url: `${siteUrl}/${lang}/${city.slug}/` });
+      if (segments[1]) {
+        const service = services.find((item) => item.slug === segments[1]);
+        items.push({ name: service ? `${lc.name} ${localizedService(service, lang).name}` : title, url: canonical });
+      }
+    } else if (segments[0] === "iletisim") {
+      items.push({ name: locale[lang].contact, url: canonical });
+    }
+  }
+
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url
+    }))
+  };
+}
+
+function pageSchema({ lang, title, description, canonicalPath }) {
+  const canonical = `${siteUrl}/${lang}${canonicalPath}`;
+  return {
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: lang,
+    isPartOf: { "@id": `${siteUrl}/${lang}/#website` },
+    about: { "@id": `${siteUrl}/#localbusiness` },
+    breadcrumb: { "@id": `${canonical}#breadcrumb` }
+  };
+}
+
+function defaultFaqs(lang, service = null, city = null) {
+  const serviceName = service ? localizedService(service, lang).name : (lang === "ru" ? "услугу" : "service");
+  const cityName = city ? localizedCity(city, lang).name : (lang === "ru" ? "Кипре" : "Cyprus");
+  if (lang === "ru") {
+    return [
+      { q: `Как получить цену на ${serviceName} в районе ${cityName}?`, a: "Заполните форму на странице. Город, услуга, дата и примечания автоматически откроются в WhatsApp, а команда Sanu быстро ответит." },
+      { q: "В каких районах работает Sanu Cleaning?", a: "Компания находится в Никосии и принимает заявки по Никосии, Кирении, Фамагусте, Гюзельюрту и ближайшим районам." },
+      { q: "Какие данные лучше отправить заранее?", a: "Адрес, желаемую дату, тип услуги, площадь и, если возможно, фото или короткое видео помещения." }
+    ];
+  }
+  return [
+    { q: `How can I get a quote for ${serviceName} in ${cityName}?`, a: "Fill in the request form on the page. Your area, service, date and notes will open in WhatsApp so the Sanu team can reply quickly." },
+    { q: "Which areas does Sanu Cleaning serve?", a: "Sanu is based in Nicosia and accepts requests across Nicosia, Kyrenia, Famagusta, Güzelyurt and nearby areas." },
+    { q: "What should I send before the visit?", a: "Please share the address, preferred date, service type, property size and, if possible, photos or a short video." }
+  ];
+}
+
+function faqSchema(lang, faqs, canonicalPath) {
+  return {
+    "@type": "FAQPage",
+    "@id": `${siteUrl}/${lang}${canonicalPath}#faq`,
+    inLanguage: lang,
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a
+      }
+    }))
+  };
+}
+
+function faqSection(lang, faqs) {
+  if (!faqs?.length) return "";
+  return `
+    <section class="bg-white py-16 sm:py-20" id="faq">
+      <div class="mx-auto max-w-4xl px-4 lg:px-8">
+        <p class="section-kicker">${lang === "ru" ? "Вопросы" : "FAQ"}</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950">${lang === "ru" ? "Частые вопросы" : "Frequently Asked Questions"}</h2>
+        <div class="mt-8 grid gap-4">
+          ${faqs.map((faq) => `<details class="surface p-5"><summary class="cursor-pointer text-lg font-black text-slate-950">${esc(faq.q)}</summary><p class="mt-3 leading-7 text-slate-600">${esc(faq.a)}</p></details>`).join("")}
+        </div>
+      </div>
+    </section>`;
+}
+
+function serviceSchema(lang, service, city = null) {
+  const ls = localizedService(service, lang);
+  const lc = city ? localizedCity(city, lang) : null;
+  const url = city ? `${siteUrl}/${lang}/${city.slug}/${service.slug}/` : `${siteUrl}/${lang}/hizmetler/${service.slug}/`;
+  return {
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: lc ? `${lc.name} ${ls.name}` : ls.name,
+    description: ls.short,
+    serviceType: ls.category,
+    provider: { "@id": `${siteUrl}/#localbusiness` },
+    areaServed: lc ? { "@type": "City", name: lc.name } : cities.map((item) => ({ "@type": "City", name: localizedCity(item, lang).name })),
+    url,
+    image: service.image.startsWith("/") ? `${siteUrl}${service.image}` : service.image,
+    offers: {
+      "@type": "Offer",
+      url,
+      availability: "https://schema.org/InStock",
+      priceCurrency: "TRY",
+      seller: { "@id": `${siteUrl}/#localbusiness` }
+    }
+  };
+}
+
+function itemListSchema(lang, name, items, canonicalPath) {
+  return {
+    "@type": "ItemList",
+    "@id": `${siteUrl}/${lang}${canonicalPath}#itemlist`,
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url
+    }))
+  };
+}
+
+function schemaScript(items) {
+  return `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": items
+  })}</script>`;
+}
+
+function head({ lang, title, description, keywords, canonicalPath, localPath, schema = [] }) {
   const canonical = `${siteUrl}/${lang}${canonicalPath}`;
   return `
   <meta charset="utf-8">
@@ -469,11 +674,14 @@ function head({ lang, title, description, keywords, canonicalPath, localPath }) 
   <meta name="description" content="${esc(description)}">
   <meta name="keywords" content="${esc(keywords)}">
   <meta name="robots" content="index,follow">
+  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${siteUrl}/assets/img/sanu-temizlik-logo.png">
+  <meta property="og:locale" content="${lang === "ru" ? "ru_RU" : "en_GB"}">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="${canonical}">
   ${altUrls(localPath)}
   <link rel="icon" href="/assets/img/sanu-temizlik-logo.png">
@@ -484,24 +692,7 @@ function head({ lang, title, description, keywords, canonicalPath, localPath }) 
   <link rel="stylesheet" href="/assets/css/styles.css">
   <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script defer src="/assets/js/main.js"></script>
-  <script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Sanu Temizlik ve Ticaret Ltd.",
-    image: `${siteUrl}/assets/img/sanu-temizlik-logo.png`,
-    url: siteUrl,
-    email: "info@sanutemizlik.com",
-    telephone: "+905338828989",
-    foundingDate: "2012",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Tahsin Yazıcı Sok. No:5 Çağlayan",
-      addressLocality: "Lefkoşa",
-      addressCountry: "CY"
-    },
-    areaServed: cities.map((city) => city.trName),
-    sameAs: [whatsappUrl]
-  })}</script>`;
+  ${schemaScript(schema)}`;
 }
 
 function languageDropdown(lang, localPath) {
@@ -664,17 +855,26 @@ function serviceGrid(lang, city = null) {
   return services.map((service) => serviceCard(service, lang, city)).join("");
 }
 
-function layout({ lang, title, description, keywords, canonicalPath, localPath = canonicalPath, body }) {
+function layout({ lang, title, description, keywords, canonicalPath, localPath = canonicalPath, body, faqs = defaultFaqs(lang), schema = [] }) {
+  const structuredData = [
+    localBusinessSchema(lang),
+    webSiteSchema(lang),
+    pageSchema({ lang, title, description, canonicalPath }),
+    breadcrumbSchema(lang, canonicalPath, title),
+    ...(faqs?.length ? [faqSchema(lang, faqs, canonicalPath)] : []),
+    ...schema
+  ];
   return `<!doctype html>
 <html lang="${lang}">
 <head>
-${head({ lang, title, description, keywords, canonicalPath, localPath })}
+${head({ lang, title, description, keywords, canonicalPath, localPath, schema: structuredData })}
 </head>
 <body class="bg-slate-50">
   <a class="skip-link" href="#main">${lang === "ru" ? "Перейти к содержанию" : "Skip to content"}</a>
   ${header(lang, localPath)}
   <main id="main">
     ${body}
+    ${faqSection(lang, faqs)}
   </main>
   ${footer(lang)}
 </body>
@@ -756,6 +956,12 @@ function homePage(lang) {
     description: t.homeDescription,
     keywords: t.keywordLinks.map(([label]) => label).join(", "),
     canonicalPath: "/",
+    schema: [
+      itemListSchema(lang, lang === "ru" ? "Популярные услуги Sanu Cleaning" : "Sanu Cleaning Featured Services", services.map((service) => ({
+        name: localizedService(service, lang).name,
+        url: `${siteUrl}/${lang}/hizmetler/${service.slug}/`
+      })), "/")
+    ],
     body
   });
 }
@@ -780,6 +986,12 @@ function servicesIndexPage(lang) {
     description: lang === "ru" ? "Все услуги Sanu Cleaning: уборка дома, офиса, чистка ковров, pest control, фасадные окна и технический сервис на Кипре." : "All Sanu Cleaning services: home cleaning, office cleaning, carpet cleaning, pest control, exterior glass cleaning and technical support in Cyprus.",
     keywords: uniqueList(services.flatMap((service) => localizedService(service, lang).keywords)).slice(0, 14).join(", "),
     canonicalPath: "/hizmetler/",
+    schema: [
+      itemListSchema(lang, lang === "ru" ? "Список услуг Sanu Cleaning" : "Sanu Cleaning Service List", services.map((service) => ({
+        name: localizedService(service, lang).name,
+        url: `${siteUrl}/${lang}/hizmetler/${service.slug}/`
+      })), "/hizmetler/")
+    ],
     body
   });
 }
@@ -814,6 +1026,12 @@ function cityPage(lang, city) {
     description: lang === "ru" ? `${lc.title}: уборка дома, офиса, ковров, клиник, магазинов, фасадных окон и технический сервис.` : `${lc.title}: home cleaning, office cleaning, carpet cleaning, clinic cleaning, shop cleaning, exterior glass cleaning and technical services.`,
     keywords: uniqueList([lc.keyword, ...t.keywordLinks.map(([label]) => label)]).join(", "),
     canonicalPath: `/${city.slug}/`,
+    schema: [
+      itemListSchema(lang, `${lc.name} ${locale[lang].services}`, services.map((service) => ({
+        name: `${lc.name} ${localizedService(service, lang).name}`,
+        url: `${siteUrl}/${lang}/${city.slug}/${service.slug}/`
+      })), `/${city.slug}/`)
+    ],
     body
   });
 }
@@ -891,6 +1109,8 @@ function servicePage(lang, service) {
     description: lang === "ru" ? `${ls.name} на Кипре от Sanu Cleaning. Отправьте заявку через WhatsApp и получите быстрый ответ.` : `${ls.name} in Cyprus by Sanu Cleaning. Send your request through WhatsApp and receive a quick response.`,
     keywords: uniqueList(ls.keywords).join(", "),
     canonicalPath: `/hizmetler/${service.slug}/`,
+    faqs: defaultFaqs(lang, service),
+    schema: [serviceSchema(lang, service)],
     body: serviceContent(lang, service)
   });
 }
@@ -904,6 +1124,8 @@ function cityServicePage(lang, city, service) {
     description: lang === "ru" ? `${lc.name} ${ls.name}: быстрый запрос через WhatsApp, понятное планирование и аккуратная работа.` : `${lc.name} ${ls.name}: quick WhatsApp request, clear planning and careful service.`,
     keywords: uniqueList([lc.keyword, ...ls.keywords]).join(", "),
     canonicalPath: `/${city.slug}/${service.slug}/`,
+    faqs: defaultFaqs(lang, service, city),
+    schema: [serviceSchema(lang, service, city)],
     body: serviceContent(lang, service, city)
   });
 }
