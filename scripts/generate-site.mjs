@@ -12,7 +12,8 @@ const cities = [
     title: "Lefkoşa Temizlik Şirketi",
     keyword: "lefkoşa temizlik şirketi",
     intro: "Lefkoşa’da işler bazen aceleye gelir; ev de ofis de bir anda toparlanmak ister. Sanu Temizlik, tam da o noktada düzenli, güler yüzlü ve işini bilen ekibiyle yanınızdadır.",
-    districts: "Çağlayan, Gönyeli, Küçük Kaymaklı, Ortaköy, Hamitköy ve Lefkoşa çevresi"
+    districts: "Çağlayan, Gönyeli, Küçük Kaymaklı, Ortaköy, Hamitköy ve Lefkoşa çevresi",
+    image: "/assets/img/photo-1543953504-20a65fdbca90.jpg"
   },
   {
     slug: "girne",
@@ -20,7 +21,8 @@ const cities = [
     title: "Girne Temizlik Şirketi",
     keyword: "girne temizlik şirketi",
     intro: "Girne’de villa, apartman, ofis ve işletmelerde temizlik işi güzel plan ister. Sanu Temizlik, yoğun sezonda da sakin zamanda da işi aksatmadan toparlar.",
-    districts: "Girne merkez, Alsancak, Lapta, Ozanköy, Çatalköy ve çevre bölgeler"
+    districts: "Girne merkez, Alsancak, Lapta, Ozanköy, Çatalköy ve çevre bölgeler",
+    image: "/assets/img/photo-1543326162-d961e0f06f52.jpg"
   },
   {
     slug: "gazi-magusa",
@@ -28,7 +30,8 @@ const cities = [
     title: "Gazi Mağusa Temizlik Şirketi",
     keyword: "gazi mağusa temizlik şirketi",
     intro: "Gazi Mağusa’da ev, iş yeri ve yeni teslim alanlar için temizliği son dakikaya bırakmadan planlamak isterseniz Sanu Temizlik hızlıca organize olur.",
-    districts: "Mağusa merkez, Yeniboğaziçi, Salamis, Tuzla ve çevre bölgeler"
+    districts: "Mağusa merkez, Yeniboğaziçi, Salamis, Tuzla ve çevre bölgeler",
+    image: "/assets/img/photo-1560943260-264fcf24c43d.jpg"
   },
   {
     slug: "guzelyurt",
@@ -36,7 +39,8 @@ const cities = [
     title: "Güzelyurt Temizlik Şirketi",
     keyword: "güzelyurt temizlik şirketi",
     intro: "Güzelyurt ve çevresinde eviniz, apartmanınız ya da iş yeriniz için temiz, ferah ve güven veren bir sonuç istiyorsanız Sanu Temizlik işi sahiplenir.",
-    districts: "Güzelyurt merkez, Lefke, Gemikonağı ve çevre bölgeler"
+    districts: "Güzelyurt merkez, Lefke, Gemikonağı ve çevre bölgeler",
+    image: "/assets/img/photo-1549488344-1f9b8d2bd1f3.jpg"
   }
 ];
 
@@ -46,7 +50,7 @@ const services = [
     name: "Ev Temizliği",
     icon: "home",
     category: "Temizlik Hizmetleri",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1581578731548-c64695cc6952.jpg",
     short: "Mutfak, banyo, salon ve yaşam alanlarında hijyen odaklı detaylı ev temizliği.",
     details: [
       "Mutfak dolap dışları, tezgah, lavabo, ocak çevresi ve günlük temas yüzeyleri temizlenir.",
@@ -60,7 +64,7 @@ const services = [
     name: "Ofis Temizliği",
     icon: "building-2",
     category: "Kurumsal Temizlik",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1497366216548-37526070297c.jpg",
     short: "Çalışma alanları, toplantı odaları, ortak kullanım alanları ve kurum içi hijyen için planlı temizlik.",
     details: [
       "Masa, kapı kolu, ortak cihazlar ve sık temas edilen yüzeyler düzenli olarak temizlenir.",
@@ -74,7 +78,7 @@ const services = [
     name: "İnşaat Sonrası Temizlik",
     icon: "hard-hat",
     category: "Özel Temizlik",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1504917595217-d4dc5ebe6122.jpg",
     short: "Tadilat, boya, yeni teslim yapı ve şantiye sonrası toz/kaba kir temizliği.",
     details: [
       "İnce toz, boya kalıntısı, zemin kirleri ve pencere çevresi kontrollü şekilde temizlenir.",
@@ -88,7 +92,7 @@ const services = [
     name: "Mermer Cilalama",
     icon: "gem",
     category: "Zemin Bakımı",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1600566752355-35792bedcfea.jpg",
     short: "Mermer zeminlerde parlaklık, bakım ve yüzey koruma için profesyonel uygulama.",
     details: [
       "Mermer yüzeylerde matlaşma, kullanım izi ve parlaklık kaybı için yerinde değerlendirme yapılır.",
@@ -102,7 +106,7 @@ const services = [
     name: "Haşere İlaçlama",
     icon: "shield-check",
     category: "Pest Control",
-    image: "https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1584820927498-cafe2c1ba93b.jpg",
     short: "Ev ve iş yerlerinde haşere riskine karşı planlı pest control hizmeti.",
     details: [
       "Mutfak, depo, ortak alan, bodrum ve işletme çevresi gibi riskli noktalar değerlendirilir.",
@@ -116,7 +120,7 @@ const services = [
     name: "Koltuk Yıkama",
     icon: "sofa",
     category: "Kumaş Yüzey Bakımı",
-    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1563453392212-326f5e854473.jpg",
     short: "Koltuk, oturma grubu ve kumaş yüzeylerde yerinde yıkama ve bakım.",
     details: [
       "Koltuk kumaşı, leke durumu ve kullanım yoğunluğuna göre uygun temizlik planı yapılır.",
@@ -130,7 +134,7 @@ const services = [
     name: "Halı Yıkama",
     icon: "scan",
     category: "Kumaş Yüzey Bakımı",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1513694203232-719a280e022f.jpg",
     short: "Halı, kilim ve kumaş yüzeyler için hijyen odaklı yıkama ve bakım yönlendirmesi.",
     details: [
       "Halı türü, ölçü, leke durumu ve teslim beklentisine göre hizmet kapsamı netleştirilir.",
@@ -144,7 +148,7 @@ const services = [
     name: "Apartman Merdiven Temizliği",
     icon: "stairs",
     category: "Düzenli Temizlik",
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1505693416388-ac5ce068fe85.jpg",
     short: "Apartman girişleri, merdivenler, korkuluklar, asansör çevresi ve ortak alanlar için düzenli temizlik.",
     details: [
       "Haftalık veya aylık periyotlarla apartman ortak alanları planlı şekilde temizlenir.",
@@ -158,7 +162,7 @@ const services = [
     name: "Düzenli Temizlik",
     icon: "calendar-check",
     category: "Düzenli Temizlik",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1527515637462-cff94eecc1ac.jpg",
     short: "Ev, ofis, apartman, mağaza ve işletmeler için haftalık/aylık düzenli temizlik programları.",
     details: [
       "Temizlik sıklığı, personel ihtiyacı, alan büyüklüğü ve çalışma saatleri birlikte planlanır.",
@@ -172,7 +176,7 @@ const services = [
     name: "Hastane ve Klinik Temizliği",
     icon: "cross",
     category: "Kurumsal Temizlik",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1586773860418-d37222d8fce3.jpg",
     short: "Klinik, muayenehane, sağlık merkezi ve bekleme alanlarında hijyen odaklı kurumsal temizlik.",
     details: [
       "Bekleme salonu, danışma alanı, hasta kabul noktaları ve ortak yüzeyler düzenli temizlenir.",
@@ -186,7 +190,7 @@ const services = [
     name: "Mağaza Temizliği",
     icon: "store",
     category: "Kurumsal Temizlik",
-    image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1607082349566-187342175e2f.jpg",
     short: "Mağaza, showroom, restoran giriş alanı ve ticari işletmeler için vitrini güçlü temizlik.",
     details: [
       "Zemin, raf çevresi, kasa alanı, soyunma kabini, cam ve giriş noktaları programa dahil edilebilir.",
@@ -200,7 +204,7 @@ const services = [
     name: "Dış Cephe Cam Temizliği",
     icon: "panels-top-left",
     category: "Özel Temizlik",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1486406146926-c627a92ad1ab.jpg",
     short: "İş yeri, mağaza, bina ve villa camlarında dış cephe ve erişimi zor cam temizliği.",
     details: [
       "Vitrin, giriş camı, ofis cephesi ve ulaşılması zor camlar için alan incelemesi yapılır.",
@@ -214,7 +218,7 @@ const services = [
     name: "Elektrik Servisi",
     icon: "zap",
     category: "Teknik Servis",
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1621905252507-b35492cc74b4.jpg",
     short: "Ev ve iş yerleri için elektrik arıza, kontrol, küçük onarım ve teknik destek talepleri.",
     details: [
       "Priz, anahtar, sigorta, aydınlatma ve küçük elektrik arızaları için talep alınır.",
@@ -228,7 +232,7 @@ const services = [
     name: "Su Tesisatı Servisi",
     icon: "droplets",
     category: "Teknik Servis",
-    image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1607472586893-edb57bdc0e39.jpg",
     short: "Su kaçağı, batarya, lavabo, gider ve küçük tesisat talepleri için teknik servis yönlendirmesi.",
     details: [
       "Lavabo, musluk, sifon, gider ve küçük tesisat işleri için ön bilgi alınır.",
@@ -242,7 +246,7 @@ const services = [
     name: "Bakım Onarım",
     icon: "wrench",
     category: "Teknik Servis",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1581092160562-40aa08e78837.jpg",
     short: "Ev, ofis ve işletmeler için küçük bakım, onarım ve düzenli teknik destek işleri.",
     details: [
       "Kapı, dolap, küçük tadilat, basit tamirat ve işletme içi bakım talepleri alınır.",
@@ -256,7 +260,7 @@ const services = [
     name: "Montaj Servisi",
     icon: "hammer",
     category: "Teknik Servis",
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1400&q=82",
+    image: "/assets/img/photo-1581092918056-0c4c3acd3789.jpg",
     short: "Raf, aksesuar, küçük mobilya ve işletme ekipmanları için montaj desteği.",
     details: [
       "Küçük mobilya, raf, askı, aksesuar ve işletme içi ekipman montajı için talep alınır.",
@@ -278,6 +282,10 @@ function esc(value) {
 
 function stripHtml(value) {
   return String(value).replace(/<[^>]*>/g, "");
+}
+
+function absoluteImage(image) {
+  return image.startsWith("/") ? `${siteUrl}${image}` : image;
 }
 
 function rel(depth) {
@@ -772,24 +780,29 @@ ${head({ title, description, keywords, canonical, depth, extra: `${schemaScript(
 function homePage() {
   const body = `
     <section class="hero-cleaning min-h-[76vh]">
+      <div class="hero-bg" aria-hidden="true">
+        <video autoplay loop muted playsinline class="absolute inset-0 h-full w-full object-cover">
+          <source src="/assets/video/hero.webm" type="video/webm">
+        </video>
+      </div>
       <div class="mx-auto flex min-h-[76vh] max-w-7xl items-center px-4 py-20 lg:px-8">
         <div class="max-w-3xl text-white">
-          <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">Kıbrıs’ta temiz pak hizmet</p>
+          <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">Kıbrıs’ta temiz pak hizmet - 2012’den beri</p>
           <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">Sanu Temizlik ve Ticaret Ltd.</h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">Eviniz, ofisiniz ya da işletmeniz “bir el atsak da ferahlasa” dediğinde Sanu Temizlik yanınızda. 2012’den beri Lefkoşa merkezli ekibimizle ${keywordLink("lefkoşa temizlik şirketi")}, ${keywordLink("girne temizlik şirketi")}, ${keywordLink("kıbrıs temizlik şirketi")} ve ${keywordLink("lefkoşa halı yıkama")} arayanlara sıcak, güvenilir ve düzgün planlanmış hizmet sunuyoruz.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="hero-badge inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm">
+              <i data-lucide="star" class="h-4 w-4 text-yellow-300"></i> 2012’de Kurulduk
+            </span>
+            <span class="hero-badge inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm" style="animation-delay:1.3s">
+              <i data-lucide="map-pin" class="h-4 w-4 text-sky-200"></i> Lefkoşa Merkezli
+            </span>
+          </div>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a class="btn-white" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="send" class="h-5 w-5"></i><span>WhatsApp’tan Teklif Al</span></a>
             <a class="btn-secondary" href="#services"><i data-lucide="sparkles" class="h-5 w-5"></i><span>Hizmetleri İncele</span></a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="bg-white py-8" aria-label="Sanu Temizlik öne çıkan bilgiler">
-      <div class="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 lg:px-8">
-        <div class="stat-card bg-slate-50 p-5"><strong class="block text-3xl font-black text-brand-800">2012</strong><span class="text-sm font-semibold text-slate-600">Yıllık deneyim</span></div>
-        <div class="stat-card bg-slate-50 p-5"><strong class="block text-3xl font-black text-brand-800">4 Şehir</strong><span class="text-sm font-semibold text-slate-600">Lefkoşa, Girne, Mağusa, Güzelyurt</span></div>
-        <div class="stat-card bg-slate-50 p-5"><strong class="block text-3xl font-black text-brand-800">16 Hizmet</strong><span class="text-sm font-semibold text-slate-600">Temizlik ve teknik servis</span></div>
       </div>
     </section>
 
@@ -812,7 +825,7 @@ function homePage() {
           <p class="mt-4 text-lg leading-8 text-slate-600">Her bölgenin temposu başka. Lefkoşa’da ofis yoğunluğu, Girne’de villa ve işletme trafiği, Mağusa’da yeni teslim alanlar, Güzelyurt’ta düzenli bakım ihtiyacı öne çıkar. Bu yüzden her şehir için ayrı sayfalar hazırladık; aradığınız hizmete doğrudan ulaşın, WhatsApp’tan hızlıca konuşalım.</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          ${cities.map((city) => `<a class="city-card block bg-slate-50 p-6" href="${city.slug}/"><h3 class="text-xl font-black text-brand-900">${city.title}</h3><p class="mt-3 text-sm leading-6 text-slate-600">${city.intro}</p><p class="mt-4 text-sm font-black text-brand-700">Tüm şehir hizmetlerini incele</p></a>`).join("")}
+          ${cities.map((city) => `<a class="city-card block overflow-hidden bg-slate-50" href="${city.slug}/"><img src="${city.image}" alt="${city.title} bölge görseli" class="aspect-[16/10] w-full object-cover" loading="lazy"><div class="p-6"><h3 class="text-xl font-black text-brand-900">${city.title}</h3><p class="mt-3 text-sm leading-6 text-slate-600">${city.intro}</p><p class="mt-4 text-sm font-black text-brand-700">Tüm şehir hizmetlerini incele</p></div></a>`).join("")}
         </div>
       </div>
     </section>
@@ -823,7 +836,7 @@ function homePage() {
           <p class="section-kicker">Servis Talebi</p>
           <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">İşinizi anlatın, WhatsApp mesajınız hazır açılsın</h2>
           <p class="mt-4 text-lg leading-8 text-slate-600">Uzun uzun form doldurup cevap beklemeyesiniz diye talebinizi WhatsApp’a çeviriyoruz. Şehir, hizmet, tarih ve notunuzu yazın; mesaj otomatik hazırlansın, biz de size en kısa zamanda dönüş yapalım.</p>
-          <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1100&q=80" alt="Profesyonel temizlik malzemeleri ve hijyen ekipmanı" class="mt-8 h-72 w-full rounded-lg object-cover" loading="lazy">
+          <img src="/assets/img/photo-1527515637462-cff94eecc1ac.jpg" alt="Profesyonel temizlik malzemeleri ve hijyen ekipmanı" class="mt-8 h-72 w-full rounded-lg object-cover" loading="lazy">
         </div>
         ${quoteForm()}
       </div>
@@ -831,7 +844,7 @@ function homePage() {
 
     <section id="about" class="bg-white py-16 sm:py-20">
       <div class="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=1100&q=80" alt="Sanu Temizlik profesyonel temizlik ekipmanı" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
+        <img src="/assets/img/sanu-hero-team.jpg" alt="Sanu Temizlik ekibi ve servis aracı" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
         <div class="content-panel seo-rich">
           <p class="section-kicker">Hakkımızda</p>
           <h2 class="mt-3 text-3xl sm:text-4xl">2012’den beri Lefkoşa merkezli, sözüne sadık ekip</h2>
@@ -897,7 +910,7 @@ function cityPage(city) {
           <p class="mt-4 text-lg leading-8 text-slate-600">Hizmet bölgeleri: ${city.districts}. ${keywordLink("ev temizliği", 1, city)}, ${keywordLink("ofis temizliği", 1, city)} ve ${keywordLink("kıbrıs temizlik şirketi", 1, city)} aramalarında bölgenize uygun hizmeti seçin, WhatsApp’tan detayları konuşalım.</p>
           <a class="btn-primary mt-8" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="send" class="h-5 w-5"></i><span>Bu Şehir İçin Teklif Al</span></a>
         </div>
-        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1100&q=80" alt="${city.title} profesyonel temizlik hizmeti" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
+        <img src="${city.image}" alt="${city.title} bölge ve temizlik hizmeti" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
       </div>
     </section>
     <section class="py-16">
@@ -996,7 +1009,7 @@ function serviceSchema(service, city = null) {
     provider: { "@id": `${siteUrl}/#localbusiness` },
     areaServed: city ? { "@type": "City", name: city.name } : cities.map((item) => ({ "@type": "City", name: item.name })),
     url,
-    image: service.image,
+    image: absoluteImage(service.image),
     offers: {
       "@type": "Offer",
       url,

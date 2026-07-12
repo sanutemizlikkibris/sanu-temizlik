@@ -17,7 +17,8 @@ const cities = [
     enIntro: "In Nicosia, homes, offices and apartment blocks often need a reliable team that can arrive on time and work neatly around a busy day.",
     ruIntro: "В Никосии домам, офисам и жилым комплексам часто нужна команда, которая приезжает вовремя и аккуратно работает в удобное для клиента время.",
     enDistricts: "Çağlayan, Gönyeli, Küçük Kaymaklı, Ortaköy, Hamitköy and nearby Nicosia districts",
-    ruDistricts: "Чаглаян, Гёняли, Кючюк-Каймаклы, Ортакёй, Хамиткёй и ближайшие районы Никосии"
+    ruDistricts: "Чаглаян, Гёняли, Кючюк-Каймаклы, Ортакёй, Хамиткёй и ближайшие районы Никосии",
+    image: "/assets/img/photo-1543953504-20a65fdbca90.jpg"
   },
   {
     slug: "girne",
@@ -31,7 +32,8 @@ const cities = [
     enIntro: "Kyrenia has its own rhythm: villas, holiday homes, shops and offices all need cleaning that is planned with the season and the working day in mind.",
     ruIntro: "У Кирении свой ритм: виллы, апартаменты, магазины и офисы требуют уборки, которую удобно планировать с учётом сезона и графика работы.",
     enDistricts: "Kyrenia centre, Alsancak, Lapta, Ozanköy, Çatalköy and surrounding areas",
-    ruDistricts: "центр Кирении, Алсанджак, Лапта, Озанкёй, Чаталкёй и близлежащие районы"
+    ruDistricts: "центр Кирении, Алсанджак, Лапта, Озанкёй, Чаталкёй и близлежащие районы",
+    image: "/assets/img/photo-1543326162-d961e0f06f52.jpg"
   },
   {
     slug: "gazi-magusa",
@@ -45,7 +47,8 @@ const cities = [
     enIntro: "For newly delivered flats, offices, shops and busy family homes in Famagusta, a clear cleaning plan makes the whole job calmer and faster.",
     ruIntro: "Для новых квартир, офисов, магазинов и семейных домов в Фамагусте понятный план уборки делает работу спокойнее, быстрее и качественнее.",
     enDistricts: "Famagusta centre, Yeniboğaziçi, Salamis, Tuzla and nearby areas",
-    ruDistricts: "центр Фамагусты, Енибогазичи, Саламис, Тузла и близлежащие районы"
+    ruDistricts: "центр Фамагусты, Енибогазичи, Саламис, Тузла и близлежащие районы",
+    image: "/assets/img/photo-1560943260-264fcf24c43d.jpg"
   },
   {
     slug: "guzelyurt",
@@ -59,7 +62,8 @@ const cities = [
     enIntro: "In Güzelyurt, the best cleaning service is steady, punctual and easy to speak to. Sanu keeps the process simple from the first WhatsApp message.",
     ruIntro: "В Гюзельюрте особенно ценят стабильность, пунктуальность и понятное общение. Sanu делает процесс простым уже с первого сообщения в WhatsApp.",
     enDistricts: "Güzelyurt centre, Lefke, Gemikonağı and surrounding areas",
-    ruDistricts: "центр Гюзельюрта, Лефке, Гемиконагы и близлежащие районы"
+    ruDistricts: "центр Гюзельюрта, Лефке, Гемиконагы и близлежащие районы",
+    image: "/assets/img/photo-1549488344-1f9b8d2bd1f3.jpg"
   }
 ];
 
@@ -344,7 +348,7 @@ const locale = {
     footerPages: "Pages",
     footerContact: "Contact",
     rights: "All rights reserved.",
-    whatsappDefault: "Hello Sanu Cleaning, I would like to request a quote for cleaning services in Cyprus.",
+    whatsappDefault: "Merhaba Sanu Temizlik, web sitenizden ulaşıyorum. Temizlik veya servis için hızlı fiyat almak istiyorum; gerekirse alanın kısa videosunu gönderebilirim.",
     homeTitle: "Sanu Cleaning and Trading Ltd. | Cleaning Company in Cyprus",
     homeDescription: "Sanu Cleaning and Trading Ltd. offers professional cleaning, carpet cleaning, office cleaning, pest control and technical services in Nicosia, Kyrenia, Famagusta and Güzelyurt.",
     heroKicker: "Fresh, reliable cleaning in Cyprus since 2012",
@@ -385,7 +389,7 @@ const locale = {
     footerPages: "Страницы",
     footerContact: "Контакты",
     rights: "Все права защищены.",
-    whatsappDefault: "Здравствуйте, Sanu Cleaning. Хотел(а) бы получить расчёт стоимости уборки на Кипре.",
+    whatsappDefault: "Merhaba Sanu Temizlik, web sitenizden ulaşıyorum. Temizlik veya servis için hızlı fiyat almak istiyorum; gerekirse alanın kısa videosunu gönderebilirim.",
     homeTitle: "Sanu Cleaning and Trading Ltd. | Клининговая компания на Кипре",
     homeDescription: "Sanu Cleaning and Trading Ltd. предоставляет уборку домов, офисов, чистку ковров, pest control и технические услуги в Никосии, Кирении, Фамагусте и Гюзельюрте.",
     heroKicker: "Надёжная уборка на Кипре с 2012 года",
@@ -922,7 +926,7 @@ function homePage(lang) {
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           ${cities.map((city) => {
             const lc = localizedCity(city, lang);
-            return `<a class="city-card block bg-slate-50 p-6" href="/${lang}/${city.slug}/"><h3 class="text-xl font-black text-brand-900">${lc.title}</h3><p class="mt-3 text-sm leading-6 text-slate-600">${lc.intro}</p><p class="mt-4 text-sm font-black text-brand-700">${lang === "ru" ? "Посмотреть услуги района" : "View local services"}</p></a>`;
+            return `<a class="city-card block overflow-hidden bg-slate-50" href="/${lang}/${city.slug}/"><img src="${city.image}" alt="${esc(lc.title)}" class="aspect-[16/10] w-full object-cover" loading="lazy"><div class="p-6"><h3 class="text-xl font-black text-brand-900">${lc.title}</h3><p class="mt-3 text-sm leading-6 text-slate-600">${lc.intro}</p><p class="mt-4 text-sm font-black text-brand-700">${lang === "ru" ? "Посмотреть услуги района" : "View local services"}</p></div></a>`;
           }).join("")}
         </div>
       </div>
@@ -1009,7 +1013,7 @@ function cityPage(lang, city) {
           <p class="mt-4 text-lg leading-8 text-slate-600">${lang === "ru" ? "Районы обслуживания" : "Service areas"}: ${lc.districts}. ${keywordTrail(lang)}.</p>
           <a class="btn-primary mt-8" href="${whatsappUrl}" data-whatsapp-cta data-whatsapp-message="${esc(t.whatsappDefault)}"><i data-lucide="send" class="h-5 w-5"></i><span>${t.quote}</span></a>
         </div>
-        <img src="/assets/img/photo-1581578731548-c64695cc6952.jpg" alt="${esc(lc.title)}" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
+        <img src="${city.image}" alt="${esc(lc.title)}" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
       </div>
     </section>
     <section class="py-16">

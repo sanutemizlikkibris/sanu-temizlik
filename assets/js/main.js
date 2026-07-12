@@ -20,7 +20,7 @@ const translations = {
     "form.placeholder.name": "Adınız ve soyadınız",
     "form.placeholder.phone": "Telefon numaranız",
     "form.placeholder.notes": "Adres, metrekare, saat tercihi veya özel notunuz",
-    "whatsapp.default": "Merhaba Sanu Temizlik, temizlik hizmeti için teklif almak istiyorum.",
+    "whatsapp.default": "Merhaba Sanu Temizlik, web sitenizden ulaşıyorum. Temizlik veya servis için hızlı fiyat almak istiyorum; gerekirse alanın kısa videosunu gönderebilirim.",
     "footer.rights": "Tüm hakları saklıdır."
   },
   en: {
@@ -40,7 +40,7 @@ const translations = {
     "form.placeholder.name": "Your full name",
     "form.placeholder.phone": "Your phone number",
     "form.placeholder.notes": "Address, property size, preferred time or any special requirements",
-    "whatsapp.default": "Hello Sanu Cleaning, I would like to request a quote for cleaning services in Cyprus.",
+    "whatsapp.default": "Merhaba Sanu Temizlik, web sitenizden ulaşıyorum. Temizlik veya servis için hızlı fiyat almak istiyorum; gerekirse alanın kısa videosunu gönderebilirim.",
     "footer.rights": "All rights reserved."
   },
   ru: {
@@ -60,7 +60,7 @@ const translations = {
     "form.placeholder.name": "Ваше имя и фамилия",
     "form.placeholder.phone": "Ваш номер телефона",
     "form.placeholder.notes": "Адрес, площадь, удобное время или особые пожелания",
-    "whatsapp.default": "Здравствуйте, Sanu Cleaning. Хотел(а) бы получить расчёт стоимости уборки на Кипре.",
+    "whatsapp.default": "Merhaba Sanu Temizlik, web sitenizden ulaşıyorum. Temizlik veya servis için hızlı fiyat almak istiyorum; gerekirse alanın kısa videosunu gönderebilirim.",
     "footer.rights": "Все права защищены."
   }
 };
