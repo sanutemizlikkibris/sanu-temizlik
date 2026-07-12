@@ -272,6 +272,40 @@ body {
   font-weight: 900;
 }
 
+.keyword-link {
+  color: var(--brand-700);
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 150, 199, 0.35);
+  text-underline-offset: 0.18em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.keyword-link strong {
+  color: inherit !important;
+}
+
+.keyword-link:hover,
+.sitemap-link:hover {
+  color: var(--brand-800);
+  text-decoration-color: currentColor;
+}
+
+.hero-cleaning .keyword-link,
+.service-hero .keyword-link,
+.text-white .keyword-link {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.75);
+}
+
+.sitemap-link {
+  color: var(--brand-700);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 150, 199, 0.28);
+  text-underline-offset: 0.18em;
+}
+
 /* ── Service hero banner ────────────────────────────── */
 .service-hero {
   background:
@@ -421,4 +455,3 @@ h1, h2, h3, h4, h5, h6,
 .text-white, .text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6, .text-white p {
   color: #ffffff !important;
 }
-
