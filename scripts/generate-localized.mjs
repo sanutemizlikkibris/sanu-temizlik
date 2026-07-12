@@ -432,6 +432,28 @@ function keywordTrail(lang) {
   return locale[lang].keywordLinks.map(([label, href]) => link(label, href)).join(", ");
 }
 
+function naturalKeywordParagraph(lang) {
+  if (lang === "ru") {
+    return `Если вы ищете ${link("уборка Никосия", "/ru/lefkosa/")}, важно не просто найти номер телефона, а понять, кто приедет и как будет организована работа. Для клиентов в Кирении мы отдельно подготовили страницу ${link("уборка Кирения", "/ru/girne/")}; а тем, кто сравнивает услуги по всему острову, удобнее начать с раздела ${link("клининговая компания на Кипре", "/ru/hizmetler/")}.`;
+  }
+  return `When someone searches for a ${link("Nicosia cleaning company", "/en/lefkosa/")}, they usually need clear timing, careful work and a team that is easy to reach. For Kyrenia requests, the ${link("Kyrenia cleaning company", "/en/girne/")} page explains the local service area, while broader Cyprus enquiries can start from our ${link("cleaning company in Cyprus", "/en/hizmetler/")} service overview.`;
+}
+
+function localizedServiceSearchSentence(lang, service, city = null) {
+  const ls = localizedService(service, lang);
+  const lc = city ? localizedCity(city, lang) : null;
+  const cityPath = city ? `/${lang}/${city.slug}/${service.slug}/` : `/${lang}/hizmetler/${service.slug}/`;
+  const localHref = city ? `/${lang}/${city.slug}/` : `/${lang}/hizmetler/`;
+  const localKeyword = lc?.keyword || (lang === "ru" ? "клининговая компания на Кипре" : "cleaning company in Cyprus");
+  const primaryKeyword = ls.keywords[0] || ls.name;
+  const secondaryKeyword = ls.keywords[1] || localKeyword;
+
+  if (lang === "ru") {
+    return `Мы написали эту страницу так, чтобы человек, который ищет ${link(primaryKeyword, cityPath)}, сразу видел объём услуги, подходящие помещения и порядок связи. Если запрос начинается с района, например ${link(localKeyword, localHref)}, переход к нужной услуге остаётся простым; для более точного подбора можно также открыть ${link(secondaryKeyword, cityPath)}.`;
+  }
+  return `This page is written for people who need ${link(primaryKeyword, cityPath)} but also want the scope, timing and request process explained clearly. If your search starts with a local term such as ${link(localKeyword, localHref)}, you can move from the area page to the right service quickly; related needs such as ${link(secondaryKeyword, cityPath)} are kept close to the same request path.`;
+}
+
 function uniqueList(items) {
   return [...new Set(items.filter(Boolean))];
 }
@@ -898,7 +920,7 @@ function homePage(lang) {
         <div class="max-w-3xl text-white">
           <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">${t.heroKicker}</p>
           <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">${t.heroTitle}</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">${t.heroText} ${keywordTrail(lang)}.</p>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">${t.heroText} ${lang === "ru" ? `Для запросов по Никосии можно начать со страницы ${link("уборка Никосия", "/ru/lefkosa/")}, а для общего подбора услуг — с раздела ${link("клининговая компания на Кипре", "/ru/hizmetler/")}.` : `For Nicosia requests, you can start with our ${link("Nicosia cleaning company", "/en/lefkosa/")} page, while broader service enquiries are easier to compare from the ${link("cleaning company in Cyprus", "/en/hizmetler/")} overview.`}</p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a class="btn-white" href="${whatsappUrl}" data-whatsapp-cta data-whatsapp-message="${esc(t.whatsappDefault)}"><i data-lucide="send" class="h-5 w-5"></i><span>${t.quote}</span></a>
             <a class="btn-secondary" href="#services"><i data-lucide="sparkles" class="h-5 w-5"></i><span>${t.allServices}</span></a>
@@ -949,7 +971,7 @@ function homePage(lang) {
           <p class="section-kicker">${t.about}</p>
           <h2 class="mt-3 text-3xl sm:text-4xl">${t.aboutHeading}</h2>
           <p class="mt-5">${t.aboutText}</p>
-          <p class="mt-5">${keywordTrail(lang)}.</p>
+          <p class="mt-5">${naturalKeywordParagraph(lang)}</p>
         </div>
       </div>
     </section>`;
@@ -978,7 +1000,7 @@ function servicesIndexPage(lang) {
         <div class="max-w-3xl seo-rich">
           <p class="section-kicker">${t.services}</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">${lang === "ru" ? "Клининговые и технические услуги" : "Cleaning and Technical Services"}</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">${t.servicesIntro} ${keywordTrail(lang)}.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">${t.servicesIntro} ${naturalKeywordParagraph(lang)}</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">${serviceGrid(lang)}</div>
       </div>
@@ -1010,7 +1032,7 @@ function cityPage(lang, city) {
           <p class="section-kicker">${lc.name}</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">${lc.title}</h1>
           <p class="mt-5 text-lg leading-8 text-slate-600">${lc.intro} ${link(lc.keyword, `/${lang}/${city.slug}/`)} ${lang === "ru" ? "— это запрос, где важны пунктуальность, понятная цена и аккуратный результат." : "should mean punctual arrival, clear pricing and a tidy result."}</p>
-          <p class="mt-4 text-lg leading-8 text-slate-600">${lang === "ru" ? "Районы обслуживания" : "Service areas"}: ${lc.districts}. ${keywordTrail(lang)}.</p>
+          <p class="mt-4 text-lg leading-8 text-slate-600">${lang === "ru" ? "Районы обслуживания" : "Service areas"}: ${lc.districts}. ${lang === "ru" ? `Для дома можно открыть ${link("уборка дома Кипр", `/${lang}/${city.slug}/ev-temizligi/`)}, а для офисов — страницу ${link("уборка офисов Кипр", `/${lang}/${city.slug}/ofis-temizligi/`)}.` : `For homes, you can open ${link("home cleaning Cyprus", `/${lang}/${city.slug}/ev-temizligi/`)}, and for workplaces the ${link("office cleaning Cyprus", `/${lang}/${city.slug}/ofis-temizligi/`)} page is the right next step.`}</p>
           <a class="btn-primary mt-8" href="${whatsappUrl}" data-whatsapp-cta data-whatsapp-message="${esc(t.whatsappDefault)}"><i data-lucide="send" class="h-5 w-5"></i><span>${t.quote}</span></a>
         </div>
         <img src="${city.image}" alt="${esc(lc.title)}" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
@@ -1045,13 +1067,6 @@ function serviceContent(lang, service, city = null) {
   const ls = localizedService(service, lang);
   const lc = city ? localizedCity(city, lang) : null;
   const cityPrefix = lc ? `${lc.name} ` : "";
-  const cityPath = city ? `/${lang}/${city.slug}/${service.slug}/` : `/${lang}/hizmetler/${service.slug}/`;
-  const localKeyword = lc?.keyword || (lang === "ru" ? "клининговая компания на Кипре" : "cleaning company in Cyprus");
-  const keywordLinks = [
-    link(localKeyword, city ? `/${lang}/${city.slug}/` : `/${lang}/hizmetler/`),
-    ...ls.keywords.slice(0, 2).map((keyword) => link(keyword, cityPath))
-  ].join(", ");
-
   return `
     <section class="service-hero py-20 text-white" style="--service-image: url('${service.image}')">
       <div class="mx-auto max-w-7xl px-4 lg:px-8">
@@ -1069,7 +1084,7 @@ function serviceContent(lang, service, city = null) {
           <p class="section-kicker">${ls.category}</p>
           <h2 class="mt-3 text-3xl sm:text-4xl">${cityPrefix}${ls.name}</h2>
           <p class="mt-5">${city ? (lang === "ru" ? `${lc.intro} Услуга ${ls.name.toLowerCase()} планируется по площади, состоянию помещения и удобному времени.` : `${lc.intro} ${ls.name} is planned around the property size, condition and a convenient time.`) : (lang === "ru" ? `Если вам нужна ${ls.name.toLowerCase()} на Кипре, мы сначала уточним детали и предложим понятный план.` : `If you need ${ls.name.toLowerCase()} in Cyprus, we first clarify the details and suggest a clear plan.`)}</p>
-          <p class="mt-5">${lang === "ru" ? "Для SEO и удобной навигации на этой странице связаны важные запросы" : "For SEO and easier navigation, this page links the most relevant search terms"}: ${keywordLinks}.</p>
+          <p class="mt-5">${localizedServiceSearchSentence(lang, service, city)}</p>
           <h3 class="mt-8 text-2xl">${lang === "ru" ? "Что входит в услугу?" : "What do we do?"}</h3>
           <ul class="mt-6 grid gap-4">
             ${ls.details.map((item) => `<li class="flex gap-3 rounded-lg border border-sky-100 bg-slate-50 p-4"><i data-lucide="check-circle-2" class="mt-1 h-5 w-5 shrink-0 text-brand-700"></i><span class="leading-7 text-slate-700">${item}</span></li>`).join("")}
@@ -1142,7 +1157,7 @@ function contactPage(lang) {
         <div class="seo-rich">
           <p class="section-kicker">${t.contact}</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">${t.contactTitle}</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">${t.contactIntro} ${keywordTrail(lang)}.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">${t.contactIntro} ${naturalKeywordParagraph(lang)}</p>
           <div class="mt-8 grid gap-4">
             <a class="surface flex items-center gap-4 p-4" href="tel:+905338828989"><span class="icon-tile"><i data-lucide="phone" class="h-5 w-5"></i></span><span><strong class="block text-slate-950">Phone / WhatsApp</strong>+90 533 882 89 89</span></a>
             <a class="surface flex items-center gap-4 p-4" href="mailto:info@sanutemizlik.com"><span class="icon-tile"><i data-lucide="mail" class="h-5 w-5"></i></span><span><strong class="block text-slate-950">Email</strong>info@sanutemizlik.com</span></a>

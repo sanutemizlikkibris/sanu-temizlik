@@ -352,6 +352,16 @@ function keywordList(keywords, depth = 0, city = null) {
   return keywords.map((keyword) => keywordLink(keyword, depth, city)).join(", ");
 }
 
+function serviceSearchSentence(service, city = null) {
+  const depth = city ? 2 : 2;
+  const primaryKeyword = keywordLink(service.keywords[0], depth, city);
+  const localKeyword = city ? keywordLink(city.keyword, depth, city) : keywordLink("kıbrıs temizlik şirketi", depth);
+  const secondaryKeyword = service.keywords[1] ? keywordLink(service.keywords[1], depth, city) : keywordLink("kktc temizlik şirketi", depth);
+  const placeText = city ? `${city.name} içinde` : "Kıbrıs genelinde";
+
+  return `${placeText} hizmet arayan kişi önce işi doğru anlayan bir ekibe ulaşmak ister. Bu yüzden ${primaryKeyword} sayfasında kapsamı açık anlattık; ${localKeyword} aramasıyla gelen ziyaretçi de fiyat, planlama ve iletişim adımlarını tek tek görebilir. Daha özel taleplerde ${secondaryKeyword} bağlantısı üzerinden ilgili hizmete geçmek de kolaydır.`;
+}
+
 function serviceOptions(selectedSlug = "") {
   return services.map((service) => `<option value="${service.name}" ${service.slug === selectedSlug ? "selected" : ""}>${service.name}</option>`).join("");
 }
@@ -584,7 +594,11 @@ function serviceSeoPhrase(service, city = null) {
     ? " Özellikle Lefkoşa tarafında halı ve koltuk gibi kumaş yüzeylerde temiz, ferah ve güvenilir hizmet arayanlar için doğru planlama önemlidir."
     : "";
 
-  return `${place} içinde güvenilir bir ekip ararken sadece fiyat değil, sözünde durma, doğru zamanlama ve temiz iş de önemlidir. Bu yüzden ${keywordLink(localKeyword, city ? 2 : 2, city)}, ${keywordLink("kıbrıs temizlik şirketi", city ? 2 : 2, city)} ve ${keywordLink("kktc temizlik şirketi", city ? 2 : 2, city)} aramalarında kullanıcıya gerçekten fayda veren, açık ve anlaşılır hizmet sayfaları hazırladık.${extra}`;
+  if (!city) {
+    return `${place} içinde güvenilir bir ekip ararken sadece fiyat değil, sözünde durma, doğru zamanlama ve temiz iş de önemlidir. ${keywordLink(localKeyword, 2)} aramasıyla gelen ziyaretçinin ne alacağını hemen anlaması için hizmet kapsamını açık tuttuk; farklı şehir ve servis ihtiyaçlarında da ilgili sayfalara doğal bağlantılarla geçiş sağladık.${extra}`;
+  }
+
+  return `${place} içinde güvenilir bir ekip ararken sadece fiyat değil, sözünde durma, doğru zamanlama ve temiz iş de önemlidir. ${keywordLink(localKeyword, city ? 2 : 2, city)} aramasıyla gelen ziyaretçinin ne alacağını hemen anlaması için hizmet kapsamını açık tuttuk; Kıbrıs genelinde düzenli destek isteyenler için de ${keywordLink("kıbrıs temizlik şirketi", city ? 2 : 2, city)} bağlantısından tüm hizmetlere kolay geçiş sağladık.${extra}`;
 }
 
 function localBusinessSchema() {
@@ -789,7 +803,7 @@ function homePage() {
         <div class="max-w-3xl text-white">
           <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">Kıbrıs’ta temiz pak hizmet - 2012’den beri</p>
           <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">Sanu Temizlik ve Ticaret Ltd.</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">Eviniz, ofisiniz ya da işletmeniz “bir el atsak da ferahlasa” dediğinde Sanu Temizlik yanınızda. 2012’den beri Lefkoşa merkezli ekibimizle ${keywordLink("lefkoşa temizlik şirketi")}, ${keywordLink("girne temizlik şirketi")}, ${keywordLink("kıbrıs temizlik şirketi")} ve ${keywordLink("lefkoşa halı yıkama")} arayanlara sıcak, güvenilir ve düzgün planlanmış hizmet sunuyoruz.</p>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">Eviniz, ofisiniz ya da işletmeniz “bir el atsak da ferahlasa” dediğinde Sanu Temizlik yanınızda. Lefkoşa’da güvenilir bir ekip arayanlar için ${keywordLink("lefkoşa temizlik şirketi")} sayfamızla bölge detaylarını anlattık; Girne tarafında hizmet isteyenler ${keywordLink("girne temizlik şirketi")} bağlantısından hızlıca ilerleyebilir. Kıbrıs genelindeki temizlik taleplerinde ise işin büyüklüğünü konuşur, gerekirse fotoğraf veya kısa video ile net fiyat çıkarırız.</p>
           <div class="mt-6 flex flex-wrap gap-3">
             <span class="hero-badge inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm">
               <i data-lucide="star" class="h-4 w-4 text-yellow-300"></i> 2012’de Kurulduk
@@ -811,7 +825,7 @@ function homePage() {
         <div class="max-w-3xl seo-rich">
           <p class="section-kicker">Hizmetlerimiz</p>
           <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Temizlik, düzenli bakım ve teknik servis işlerini biz toparlarız</h2>
-          <p class="mt-4 text-lg leading-8 text-slate-600">${keywordLink("ev temizliği")}, ${keywordLink("ofis temizliği")}, ${keywordLink("apartman merdiven temizliği")}, hastane ve klinik temizliği, mağaza temizliği, dış cephe cam temizliği, elektrik, su, bakım onarım ve montaj işleri için ayrı ayrı usta aramanıza gerek kalmasın. ${keywordLink("kıbrıs temizlik şirketi")} ararken beklenti aslında nettir: zamanında gelinsin, iş güzel yapılsın, iletişim açık olsun. Biz de tam buna göre çalışırız.</p>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Evin içi ferahlasın derseniz ${keywordLink("ev temizliği")} planlarıyla başlarız; iş yerinde düzen gerekiyorsa ${keywordLink("ofis temizliği")} için saatleri mesainize göre ayarlarız. Apartman ortak alanlarından hastane ve klinik temizliğine, mağaza temizliğinden dış cephe camlarına kadar tek tek usta aramanıza gerek kalmasın. ${keywordLink("kıbrıs temizlik şirketi")} ararken beklenti aslında nettir: zamanında gelinsin, iş güzel yapılsın, iletişim açık olsun. Biz de tam buna göre çalışırız.</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">${serviceGrid(0)}</div>
       </div>
@@ -848,7 +862,7 @@ function homePage() {
         <div class="content-panel seo-rich">
           <p class="section-kicker">Hakkımızda</p>
           <h2 class="mt-3 text-3xl sm:text-4xl">2012’den beri Lefkoşa merkezli, sözüne sadık ekip</h2>
-          <p class="mt-5">Sanu Temizlik ve Ticaret Ltd., Tahsin Yazıcı Sok. No:5 Çağlayan Lefkoşa / Kıbrıs adresinden Kıbrıs genelinde bireysel ve kurumsal müşterilere hizmet verir. Bizi arayanların çoğu “iş düzgün olsun, içimiz rahat etsin” der. İster ${keywordLink("lefkoşa temizlik şirketi")}, ister ${keywordLink("girne temizlik şirketi")}, ister ${keywordLink("kktc temizlik şirketi")} arıyor olun; talebi dinler, uygun planı çıkarır, işi temiz şekilde teslim etmeye bakarız.</p>
+          <p class="mt-5">Sanu Temizlik ve Ticaret Ltd., Tahsin Yazıcı Sok. No:5 Çağlayan Lefkoşa / Kıbrıs adresinden Kıbrıs genelinde bireysel ve kurumsal müşterilere hizmet verir. Bizi arayanların çoğu “iş düzgün olsun, içimiz rahat etsin” der. Lefkoşa merkezli çalıştığımız için ${keywordLink("lefkoşa temizlik şirketi")} arayan müşterilere hızlı dönüş yaparız; Girne ve çevresinde talep olduğunda da programı netleştirip aynı özenle ilerleriz.</p>
           <h3 class="mt-8 text-2xl">Temizlik ve teknik servis aynı pratik hatta</h3>
           <p class="mt-4">Apartman merdiven temizliği, ofis, hastane, mağaza ve dış cephe cam temizliği gibi düzenli işler ile elektrik, su tesisatı, bakım onarım ve montaj gibi teknik servis ihtiyaçlarını aynı WhatsApp hattından konuşabilirsiniz. “Kimle görüşecektik?” diye uğraşmayın; önce yazın, beraber netleştirelim.</p>
         </div>
@@ -877,7 +891,7 @@ function servicesIndexPage() {
         <div class="max-w-3xl seo-rich">
           <p class="section-kicker">Hizmetlerimiz</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Temizlik ve Teknik Servis Hizmetleri</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Temizlik işi sadece silip süpürmek değildir; alanın havasını değiştirmek, iş yerinde güven vermek, evde ferahlık yaratmaktır. Sanu Temizlik; ${keywordLink("kıbrıs temizlik şirketi", 1)}, ${keywordLink("kktc temizlik şirketi", 1)} ve ${keywordLink("lefkoşa halı yıkama", 1)} arayanlar için ev, ofis, apartman, sağlık, mağaza, cam, halı-koltuk yıkama ve teknik servis çözümlerini tek çatı altında toplar.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">Temizlik işi sadece silip süpürmek değildir; alanın havasını değiştirmek, iş yerinde güven vermek, evde ferahlık yaratmaktır. Kıbrıs genelinde düzenli ve güvenilir destek arayanlar ${keywordLink("kıbrıs temizlik şirketi", 1)} sayfasından tüm hizmetlere ulaşabilir; halı ve koltuk gibi kumaş yüzeylerde ise ${keywordLink("lefkoşa halı yıkama", 1)} taleplerini ayrıca değerlendiririz.</p>
         </div>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">${serviceGrid(1)}</div>
       </div>
@@ -907,7 +921,7 @@ function cityPage(city) {
           <p class="section-kicker">${city.name}</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">${city.title}</h1>
           <p class="mt-5 text-lg leading-8 text-slate-600">${city.intro} ${keywordLink(city.keyword, 1, city)} ararken insanın beklediği şey aslında çok basit: zamanında gelen, ne yapacağını bilen ve iş bitince arkasında ferah bir alan bırakan ekip. Sanu Temizlik tam da bu anlayışla çalışır.</p>
-          <p class="mt-4 text-lg leading-8 text-slate-600">Hizmet bölgeleri: ${city.districts}. ${keywordLink("ev temizliği", 1, city)}, ${keywordLink("ofis temizliği", 1, city)} ve ${keywordLink("kıbrıs temizlik şirketi", 1, city)} aramalarında bölgenize uygun hizmeti seçin, WhatsApp’tan detayları konuşalım.</p>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Hizmet bölgeleri: ${city.districts}. Ev için detaylı temizlik gerekiyorsa ${keywordLink("ev temizliği", 1, city)} sayfasına, işletme düzeni için planlı destek istiyorsanız ${keywordLink("ofis temizliği", 1, city)} hizmetine geçebilirsiniz. Bölgenize uygun işi seçin, WhatsApp’tan detayları konuşalım.</p>
           <a class="btn-primary mt-8" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="send" class="h-5 w-5"></i><span>Bu Şehir İçin Teklif Al</span></a>
         </div>
         <img src="${city.image}" alt="${city.title} bölge ve temizlik hizmeti" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
@@ -975,7 +989,7 @@ function serviceContent(service, city = null) {
             </div>
           </div>
           <h3 class="mt-8 text-2xl">Yerel aramada doğru hizmete ulaşın</h3>
-          <p class="mt-4">Sanu Temizlik ve Ticaret Ltd.; ${keywordList(service.keywords, city ? 2 : 2, city)} ihtiyaçlarında sıcak iletişim, profesyonel ekip ve anlaşılır teklif süreci sunar. ${city ? `${city.name} için hizmet detayını formdan gönderdiğinizde WhatsApp mesajınız hazır şekilde açılır.` : "Şehir seçerek talebinizi daha doğru yönlendirebilirsiniz."}</p>
+          <p class="mt-4">${serviceSearchSentence(service, city)} ${city ? `${city.name} için hizmet detayını formdan gönderdiğinizde WhatsApp mesajınız hazır şekilde açılır.` : "Şehir seçerek talebinizi daha doğru yönlendirebilirsiniz."}</p>
         </article>
         <aside>
           <img src="${service.image}" alt="${cityText}${service.name} için kaliteli hizmet görseli" class="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy">
@@ -1067,7 +1081,7 @@ function contactPage() {
         <div class="seo-rich">
           <p class="section-kicker">İletişim</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Sanu Temizlik İletişim</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Aklınızdaki işi anlatın, biz birlikte netleştirelim. Sanu Temizlik ve Ticaret Ltd. için teklif, randevu ve servis taleplerinizi iletişim formuyla doğrudan WhatsApp’a aktarabilirsiniz. ${keywordLink("Lefkoşa temizlik şirketi", 1)}, ${keywordLink("Girne temizlik şirketi", 1)}, ${keywordLink("Kıbrıs temizlik şirketi", 1)} ve ${keywordLink("Lefkoşa halı yıkama", 1)} taleplerinde hızlı ve samimi dönüş yapmaya özen gösteririz.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">Aklınızdaki işi anlatın, biz birlikte netleştirelim. Sanu Temizlik ve Ticaret Ltd. için teklif, randevu ve servis taleplerinizi iletişim formuyla doğrudan WhatsApp’a aktarabilirsiniz. Lefkoşa tarafında ekip arıyorsanız ${keywordLink("Lefkoşa temizlik şirketi", 1)} sayfasına, Girne’de hizmet planlamak istiyorsanız ${keywordLink("Girne temizlik şirketi", 1)} bağlantısına göz atabilirsiniz. Halı ve koltuk gibi kumaş yüzey taleplerini de fotoğraf veya kısa video ile hızlıca değerlendiririz.</p>
           <div class="mt-8 grid gap-4">
             <a class="surface flex items-center gap-4 p-4" href="tel:+905338828989"><span class="icon-tile"><i data-lucide="phone" class="h-5 w-5"></i></span><span><strong class="block text-slate-950">Telefon / WhatsApp</strong>+90 533 882 89 89</span></a>
             <a class="surface flex items-center gap-4 p-4" href="mailto:info@sanutemizlik.com"><span class="icon-tile"><i data-lucide="mail" class="h-5 w-5"></i></span><span><strong class="block text-slate-950">E-posta</strong>info@sanutemizlik.com</span></a>
@@ -1130,7 +1144,7 @@ function humanSitemapPage() {
         <div class="max-w-3xl seo-rich">
           <p class="section-kicker">Site Haritası</p>
           <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Sanu Temizlik Site Haritası</h1>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Aradığınız hizmete en kısa yoldan ulaşmanız için bütün şehir ve hizmet sayfalarını burada topladık. ${keywordLink("lefkoşa temizlik şirketi", 1)}, ${keywordLink("girne temizlik şirketi", 1)}, ${keywordLink("kıbrıs temizlik şirketi", 1)} ve ${keywordLink("lefkoşa halı yıkama", 1)} bağlantılarıyla doğru sayfaya hemen geçebilirsiniz.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">Aradığınız hizmete en kısa yoldan ulaşmanız için bütün şehir ve hizmet sayfalarını burada topladık. Lefkoşa’da temizlik ekibi arıyorsanız ${keywordLink("lefkoşa temizlik şirketi", 1)} bağlantısından başlayabilir, Girne bölgesi için ${keywordLink("girne temizlik şirketi", 1)} sayfasına geçebilirsiniz. Kumaş yüzeylerde ise ${keywordLink("lefkoşa halı yıkama", 1)} içeriği size daha doğru yön verir.</p>
         </div>
         <div class="mt-10 grid gap-6 lg:grid-cols-2">
           <section class="surface p-6">
