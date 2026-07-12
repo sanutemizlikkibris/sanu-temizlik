@@ -1019,6 +1019,7 @@ function sitemap() {
   const localizedUrls = ["en", "ru"].flatMap((lang) => [
     [`/${lang}/`, "0.84"],
     [`/${lang}/hizmetler/`, "0.8"],
+    [`/${lang}/iletisim/`, "0.76"],
     ...cities.map((city) => [`/${lang}/${city.slug}/`, "0.78"]),
     ...services.map((service) => [`/${lang}/hizmetler/${service.slug}/`, "0.75"]),
     ...cities.flatMap((city) => services.map((service) => [`/${lang}/${city.slug}/${service.slug}/`, "0.72"]))
