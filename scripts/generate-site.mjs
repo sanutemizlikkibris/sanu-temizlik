@@ -1142,6 +1142,233 @@ function landingPage() {
 </html>`;
 }
 
+function seoToolPage() {
+  const body = `
+    <section class="bg-white py-12 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 lg:px-8">
+        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="section-kicker">SEO Çalışma Paneli</p>
+            <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">Günlük backlink ve citation takip paneli</h1>
+            <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-600">Bu panel otomatik spam link basmaz. Kaldığınız yeri saklar, doğru sayfa ve anahtar kelimeyle temiz profil, citation ve outreach görevleri üretir.</p>
+          </div>
+          <a class="btn-primary" href="${whatsappUrl}" data-whatsapp-cta><i data-lucide="message-circle" class="h-5 w-5"></i><span>WhatsApp</span></a>
+        </div>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-4">
+          <div class="surface p-5"><p class="text-sm font-bold text-slate-500">Bugünkü açık görev</p><strong class="mt-2 block text-3xl text-brand-800" data-seo-stat="today">0</strong></div>
+          <div class="surface p-5"><p class="text-sm font-bold text-slate-500">Tamamlanan</p><strong class="mt-2 block text-3xl text-brand-800" data-seo-stat="done">0</strong></div>
+          <div class="surface p-5"><p class="text-sm font-bold text-slate-500">Sıradaki</p><strong class="mt-2 block text-3xl text-brand-800" data-seo-stat="cursor">1</strong></div>
+          <div class="surface p-5"><p class="text-sm font-bold text-slate-500">Döngü</p><strong class="mt-2 block text-3xl text-brand-800" data-seo-stat="cycle">1</strong></div>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <section class="surface p-5 sm:p-7">
+            <div class="flex flex-wrap gap-3">
+              <button class="btn-primary" type="button" data-seo-start><i data-lucide="play" class="h-5 w-5"></i><span>Bugünü Başlat / Devam Et</span></button>
+              <button class="btn-secondary" type="button" data-seo-next><i data-lucide="skip-forward" class="h-5 w-5"></i><span>Sıradaki</span></button>
+              <button class="btn-secondary" type="button" data-seo-export><i data-lucide="download" class="h-5 w-5"></i><span>CSV</span></button>
+            </div>
+
+            <div class="mt-6 rounded-lg border border-sky-100 bg-slate-50 p-5" data-current-task>
+              <p class="text-sm font-black uppercase tracking-widest text-brand-700">Hazır</p>
+              <h2 class="mt-2 text-2xl font-black text-slate-950">Bugünkü listeyi başlatın</h2>
+              <p class="mt-3 text-slate-600">Her görevde tek hedef sayfa, doğal bağlantı metni ve gerçek profil/outreach kullanın.</p>
+            </div>
+
+            <div class="mt-6 grid gap-3">
+              <button class="btn-primary w-full" type="button" data-seo-done><i data-lucide="check-circle-2" class="h-5 w-5"></i><span>Tamamlandı İşaretle</span></button>
+              <button class="btn-secondary w-full" type="button" data-seo-copy><i data-lucide="copy" class="h-5 w-5"></i><span>Outreach Metnini Kopyala</span></button>
+            </div>
+          </section>
+
+          <section class="surface p-5 sm:p-7">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="section-kicker">Günlük Kuyruk</p>
+                <h2 class="mt-2 text-2xl font-black text-slate-950">Bugünkü güvenli görevler</h2>
+              </div>
+              <button class="btn-secondary" type="button" data-seo-reset><i data-lucide="refresh-cw" class="h-5 w-5"></i><span>Sıfırla</span></button>
+            </div>
+            <div class="mt-5 grid gap-3" data-seo-list></div>
+          </section>
+        </div>
+
+        <section class="mt-8 rounded-lg border border-amber-200 bg-amber-50 p-5 text-amber-950">
+          <h2 class="text-lg font-black">Güvenli kullanım</h2>
+          <p class="mt-2 leading-7">Aynı metni onlarca yere kopyalamayın, otomatik hesap açmayın, yorum/form spam yapmayın. Her bağlantı gerçek profil, yerel citation, iş ortaklığı veya editoryal outreach üzerinden ilerlemeli.</p>
+        </section>
+      </div>
+    </section>
+
+    <script>
+      (() => {
+        const prospects = [
+          ["Google Business Profile", "İşletme profili", "https://www.google.com/business/"],
+          ["Bing Places", "İşletme profili", "https://www.bingplaces.com/"],
+          ["Apple Business Connect", "Harita profili", "https://businessconnect.apple.com/"],
+          ["Facebook Sayfası", "Sosyal profil", "https://www.facebook.com/pages/create"],
+          ["LinkedIn Company Page", "Kurumsal profil", "https://www.linkedin.com/company/setup/new/"],
+          ["Yerel Kıbrıs işletme dizini", "Yerel citation", ""],
+          ["Temizlik sektörü rehberi", "Sektörel citation", ""],
+          ["Apartman ve site yönetimi blogu", "Outreach", ""],
+          ["Emlak danışmanı kaynak sayfası", "Outreach", ""],
+          ["Ofis yönetimi kaynak sayfası", "Outreach", ""],
+          ["Klinik/sağlık işletmeleri kaynak sayfası", "Outreach", ""],
+          ["Mağaza ve perakende iş ortaklığı", "Outreach", ""],
+          ["Yerel haber/duyuru sitesi", "PR", ""],
+          ["Tedarikçi/partner referans sayfası", "Partner linki", ""]
+        ];
+        const keywords = [
+          ["lefkoşa temizlik şirketi", "/lefkosa/"],
+          ["girne temizlik şirketi", "/girne/"],
+          ["kıbrıs temizlik şirketi", "/hizmetler/"],
+          ["kktc temizlik şirketi", "/hizmetler/"],
+          ["lefkoşa halı yıkama", "/lefkosa/hali-yikama/"],
+          ["ev temizliği", "/hizmetler/ev-temizligi/"],
+          ["ofis temizliği", "/hizmetler/ofis-temizligi/"],
+          ["koltuk yıkama", "/hizmetler/koltuk-yikama/"],
+          ["apartman merdiven temizliği", "/hizmetler/apartman-merdiven-temizligi/"],
+          ["dış cephe cam temizliği", "/hizmetler/dis-cephe-cam-temizligi/"]
+        ];
+        const siteUrl = "${siteUrl}";
+        const stateKey = "sanuSeoPlanner.v1";
+        const todayKey = new Date().toISOString().slice(0, 10);
+        const batchSize = 8;
+        const comboCount = prospects.length * keywords.length;
+        const load = () => JSON.parse(localStorage.getItem(stateKey) || '{"cursor":0,"done":[],"today":"","batch":[]}');
+        const save = (state) => localStorage.setItem(stateKey, JSON.stringify(state));
+        let state = load();
+        let current = null;
+
+        function taskAt(index) {
+          const safeIndex = ((index % comboCount) + comboCount) % comboCount;
+          const prospect = prospects[Math.floor(safeIndex / keywords.length) % prospects.length];
+          const keyword = keywords[safeIndex % keywords.length];
+          return {
+            id: "task-" + index,
+            index,
+            cycle: Math.floor(index / comboCount) + 1,
+            prospect: prospect[0],
+            type: prospect[1],
+            url: prospect[2],
+            keyword: keyword[0],
+            target: siteUrl + keyword[1],
+            note: index < comboCount ? "Profil/citation bilgisi temiz ve doğal olsun." : "İçeriği yenileyin, aynı metni tekrar etmeyin."
+          };
+        }
+
+        function startDay() {
+          if (state.today !== todayKey || !state.batch.length) {
+            state.today = todayKey;
+            state.batch = Array.from({ length: batchSize }, (_, i) => state.cursor + i);
+            save(state);
+          }
+          current = current || taskAt(state.batch[0] ?? state.cursor);
+          render();
+        }
+
+        function outreachText(task) {
+          return [
+            "Merhaba,",
+            "",
+            "Sanu Temizlik ve Ticaret Ltd. olarak Kıbrıs genelinde profesyonel temizlik ve teknik servis hizmetleri sunuyoruz.",
+            "Kaynak listenizde " + task.keyword + " arayan kullanıcılar için faydalı olabilecek ilgili sayfamız:",
+            task.target,
+            "",
+            "Uygun görürseniz doğal bir kaynak bağlantısı olarak değerlendirebilirsiniz.",
+            "Teşekkürler."
+          ].join("\\n");
+        }
+
+        function render() {
+          const done = new Set(state.done);
+          const indexes = state.batch.length ? state.batch : Array.from({ length: batchSize }, (_, i) => state.cursor + i);
+          const todayTasks = indexes.map(taskAt);
+          document.querySelector('[data-seo-stat="today"]').textContent = todayTasks.filter((task) => !done.has(task.id)).length;
+          document.querySelector('[data-seo-stat="done"]').textContent = state.done.length;
+          document.querySelector('[data-seo-stat="cursor"]').textContent = state.cursor + 1;
+          document.querySelector('[data-seo-stat="cycle"]').textContent = Math.floor(state.cursor / comboCount) + 1;
+          current = current || todayTasks.find((task) => !done.has(task.id)) || todayTasks[0];
+
+          document.querySelector("[data-current-task]").innerHTML =
+            '<p class="text-sm font-black uppercase tracking-widest text-brand-700">' + current.type + '</p>' +
+            '<h2 class="mt-2 text-2xl font-black text-slate-950">' + current.prospect + '</h2>' +
+            '<dl class="mt-4 grid gap-3 text-sm">' +
+            '<div><dt class="font-black text-slate-500">Anahtar kelime</dt><dd class="mt-1 text-slate-950">' + current.keyword + '</dd></div>' +
+            '<div><dt class="font-black text-slate-500">Hedef URL</dt><dd class="mt-1 break-all text-brand-800">' + current.target + '</dd></div>' +
+            '<div><dt class="font-black text-slate-500">Not</dt><dd class="mt-1 text-slate-700">' + current.note + '</dd></div>' +
+            (current.url ? '<a class="btn-secondary mt-3" ' + 'href="' + current.url + '" target="_blank" rel="noopener">Kaynağı Aç</a>' : '') +
+            '</dl>';
+
+          document.querySelector("[data-seo-list]").innerHTML = todayTasks.map((task) => {
+            const isDone = done.has(task.id);
+            return '<button type="button" class="rounded-lg border ' + (isDone ? 'border-emerald-200 bg-emerald-50' : 'border-sky-100 bg-white') + ' p-4 text-left" data-task-index="' + task.index + '">' +
+              '<span class="text-xs font-black uppercase tracking-widest text-brand-700">' + task.type + '</span>' +
+              '<strong class="mt-1 block text-slate-950">' + task.prospect + '</strong>' +
+              '<span class="mt-1 block text-sm text-slate-600">' + task.keyword + ' -> ' + task.target + '</span>' +
+              '</button>';
+          }).join("");
+
+          document.querySelectorAll("[data-task-index]").forEach((button) => {
+            button.addEventListener("click", () => {
+              current = taskAt(Number(button.dataset.taskIndex));
+              render();
+            });
+          });
+        }
+
+        document.querySelector("[data-seo-start]").addEventListener("click", startDay);
+        document.querySelector("[data-seo-next]").addEventListener("click", () => {
+          startDay();
+          const done = new Set(state.done);
+          current = state.batch.map(taskAt).find((task) => !done.has(task.id)) || taskAt(state.cursor);
+          render();
+        });
+        document.querySelector("[data-seo-done]").addEventListener("click", () => {
+          startDay();
+          if (!state.done.includes(current.id)) state.done.push(current.id);
+          state.cursor = Math.max(state.cursor, current.index + 1);
+          state.batch = state.batch.filter((index) => index !== current.index);
+          save(state);
+          current = state.batch.length ? taskAt(state.batch[0]) : taskAt(state.cursor);
+          render();
+        });
+        document.querySelector("[data-seo-copy]").addEventListener("click", async () => {
+          startDay();
+          await navigator.clipboard.writeText(outreachText(current));
+        });
+        document.querySelector("[data-seo-export]").addEventListener("click", () => {
+          startDay();
+          const rows = [["date","prospect","type","keyword","target","status"], ...state.batch.map(taskAt).map((task) => [todayKey, task.prospect, task.type, task.keyword, task.target, state.done.includes(task.id) ? "done" : "open"])];
+          const csv = rows.map((row) => row.map((cell) => '"' + String(cell).replaceAll('"', '""') + '"').join(",")).join("\\n");
+          const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+          const a = Object.assign(document.createElement("a"), { href: url, download: "sanu-seo-" + todayKey + ".csv" });
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+        document.querySelector("[data-seo-reset]").addEventListener("click", () => {
+          state = { cursor: 0, done: [], today: "", batch: [] };
+          save(state);
+          current = null;
+          render();
+        });
+        render();
+      })();
+    </script>`;
+
+  return layout({
+    title: "SEO Çalışma Paneli | Sanu Temizlik ve Ticaret Ltd.",
+    description: "Sanu Temizlik için güvenli backlink, citation ve outreach takip paneli.",
+    keywords: "seo çalışma paneli, backlink takip, citation takip",
+    canonical: `${siteUrl}/seo/`,
+    depth: 1,
+    robots: "noindex,nofollow",
+    faqs: [],
+    body
+  });
+}
+
 function humanSitemapPage() {
   const body = `
     <section class="bg-slate-50 py-16 sm:py-20">
@@ -1274,6 +1501,7 @@ node scripts/generate-site.mjs
 ensureFile("index.html", homePage());
 ensureFile("hizmetler/index.html", servicesIndexPage());
 ensureFile("iletisim/index.html", contactPage());
+ensureFile("seo/index.html", seoToolPage());
 ensureFile("site-haritasi/index.html", humanSitemapPage());
 ensureFile("404.html", notFoundPage());
 ensureFile("landing/whatsapp/index.html", landingPage());
