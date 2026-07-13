@@ -353,7 +353,7 @@ const locale = {
     homeDescription: "Sanu Cleaning and Trading Ltd. offers professional cleaning, carpet cleaning, office cleaning, pest control and technical services in Nicosia, Kyrenia, Famagusta and Güzelyurt.",
     heroKicker: "Fresh, reliable cleaning in Cyprus since 2012",
     heroTitle: "Leave the cleaning to us, enjoy the comfort",
-    heroText: "When your home, office or business needs a clean and organised finish, Sanu is ready to help. From Nicosia to Kyrenia, Famagusta and Güzelyurt, we offer friendly, well-planned cleaning with clear WhatsApp communication.",
+    heroText: "When your home, office or villa quietly says, “we can relax once this place is properly cleaned”, that is where Sanu steps in. Across Nicosia, Kyrenia, Famagusta and Güzelyurt, people expect punctual arrival, careful work and a fresh space left behind. We clarify the job, ask for a short video if needed, and deliver it clean and tidy.",
     servicesHeading: "Cleaning, regular maintenance and technical jobs under one practical roof",
     servicesIntro: "From home cleaning and office cleaning to apartment stair cleaning, clinic cleaning, shop cleaning, exterior glass cleaning and small technical jobs, you can speak to one team and get a clear plan.",
     citiesHeading: "Local cleaning support across North Cyprus",
@@ -394,7 +394,7 @@ const locale = {
     homeDescription: "Sanu Cleaning and Trading Ltd. предоставляет уборку домов, офисов, чистку ковров, pest control и технические услуги в Никосии, Кирении, Фамагусте и Гюзельюрте.",
     heroKicker: "Надёжная уборка на Кипре с 2012 года",
     heroTitle: "Доверьте уборку нам, а сами наслаждайтесь уютом",
-    heroText: "Если дому, офису или бизнесу нужна чистота без лишней суеты, команда Sanu готова помочь. Работаем в Никосии, Кирении, Фамагусте и Гюзельюрте, заранее согласуем детали и держим связь через WhatsApp.",
+    heroText: "Когда дому, офису или вилле хочется настоящей чистоты перед спокойным отдыхом, Sanu берёт работу на себя. В Никосии, Кирении, Фамагусте и Гюзельюрте клиентам важно одно: приехать вовремя, сделать аккуратно и оставить после себя свежий порядок. Мы уточняем детали, при необходимости просим короткое видео и сдаём работу чисто.",
     servicesHeading: "Уборка, регулярное обслуживание и технические работы в одном месте",
     servicesIntro: "Уборка дома и офиса, подъездов, клиник, магазинов, фасадных окон и небольшие технические задачи - всё можно обсудить с одной командой и получить понятный план.",
     citiesHeading: "Локальная помощь по уборке на Северном Кипре",
@@ -920,7 +920,7 @@ function homePage(lang) {
         <div class="max-w-3xl text-white">
           <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-sky-100">${t.heroKicker}</p>
           <h1 class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">${t.heroTitle}</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">${t.heroText} ${lang === "ru" ? `Для запросов по Никосии можно начать со страницы ${link("уборка Никосия", "/ru/lefkosa/")}, а для общего подбора услуг — с раздела ${link("клининговая компания на Кипре", "/ru/hizmetler/")}.` : `For Nicosia requests, you can start with our ${link("Nicosia cleaning company", "/en/lefkosa/")} page, while broader service enquiries are easier to compare from the ${link("cleaning company in Cyprus", "/en/hizmetler/")} overview.`}</p>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-sky-50">${t.heroText}</p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a class="btn-white" href="${whatsappUrl}" data-whatsapp-cta data-whatsapp-message="${esc(t.whatsappDefault)}"><i data-lucide="send" class="h-5 w-5"></i><span>${t.quote}</span></a>
             <a class="btn-secondary" href="#services"><i data-lucide="sparkles" class="h-5 w-5"></i><span>${t.allServices}</span></a>
@@ -966,7 +966,7 @@ function homePage(lang) {
     </section>
     <section id="about" class="bg-white py-16 sm:py-20">
       <div class="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <img src="/assets/img/sanu-hero-team.jpg" alt="Sanu Cleaning team" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
+        <img src="/assets/img/photo-1600585154526-990dced4db0d.jpg" alt="Sanu Cleaning team at work" class="h-full min-h-80 w-full rounded-lg object-cover" loading="lazy">
         <div class="content-panel seo-rich">
           <p class="section-kicker">${t.about}</p>
           <h2 class="mt-3 text-3xl sm:text-4xl">${t.aboutHeading}</h2>
