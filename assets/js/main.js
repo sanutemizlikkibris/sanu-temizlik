@@ -86,12 +86,12 @@ const turkishMessageLabels = {
 
 /* ─── Dil algılama ────────────────────────────────────────────── */
 function getCurrentLanguage() {
-  // URL yolu /en/ veya /ru/ ile başlıyorsa öncelikle onu al
+  // URL yapısı dil için tek doğru kaynak olmalı:
+  // /en/ İngilizce, /ru/ Rusça, prefixesiz tüm sayfalar Türkçedir.
   const path = window.location.pathname;
   if (path.startsWith("/en/") || path === "/en") return "en";
   if (path.startsWith("/ru/") || path === "/ru") return "ru";
-  const langParam = new URLSearchParams(window.location.search).get("lang");
-  return langParam || localStorage.getItem("sanuLanguage") || document.documentElement.lang || "tr";
+  return "tr";
 }
 
 /* ─── Dil butonları URL yönlendirmesi ─────────────────────────── */
