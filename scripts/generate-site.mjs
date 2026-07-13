@@ -874,6 +874,8 @@ function homePage() {
     description: "Sanu Temizlik ve Ticaret Ltd. Lefkoşa merkezli Kıbrıs temizlik şirketi. Ev, ofis, apartman, hastane, mağaza, dış cephe cam, halı-koltuk yıkama ve teknik servis hizmetleri.",
     keywords: "lefkoşa temizlik şirketi, girne temizlik şirketi, kıbrıs temizlik şirketi, kktc temizlik şirketi, lefkoşa halı yıkama",
     canonical: `${siteUrl}/`,
+    extraHead: `
+  <meta name="google-site-verification" content="Lj-1Wy35qbeuNIiSG-NBXQt92yRDBOK0Tuxbi9webe0">`,
     schema: [
       itemListSchema("Sanu Temizlik Öne Çıkan Hizmetler", services.map((service) => ({
         name: service.name,
